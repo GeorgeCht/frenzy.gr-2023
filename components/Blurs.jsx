@@ -18,15 +18,19 @@ const Blurs = () => {
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
       gsap.to(`.blobs`, {
-        y: (( mousePos.y )/42) + 1,
-        x: (( mousePos.x )/42) + 1,
-        rotationY: 5*(mousePos.y/window.innerHeight)-.5,
-        rotationX: 5*(mousePos.x/window.innerWidth)-.5,
-        scaleY: (( mousePos.y )/10000) + 1,
-        scaleX: (( mousePos.x )/10000) + 1,
+        y: (( mousePos.y ) / 42) + 1,
+        x: (( mousePos.x ) / 42) + 1,
+        rotationY: 5 * ( mousePos.y / window.innerHeight ) - .5,
+        rotationX: 5 * ( mousePos.x / window.innerWidth ) - .5,
+        scaleY: (( mousePos.y ) / 10000) + 1,
+        scaleX: (( mousePos.x ) / 10000) + 1,
         ease: `Power2.easeOut`,
         transformPerspective: 900,
         transformOrigin: 'center'
+      })
+      gsap.to(`.blobs`, {
+        '--blob-height-multi': (( mousePos.y ) / 6000) + .42,
+        ease: `Power1.easeOut`,
       })
     }, blobs)
     //return () => ctx.revert()
