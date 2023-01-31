@@ -50,7 +50,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>My page title</title>
+        <title>Frenzy | 2023</title>
         <meta property="og:title" content="My page title" key="title" />
       </Head>
       {isPreloading ? (

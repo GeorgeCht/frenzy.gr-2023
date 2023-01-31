@@ -17,6 +17,9 @@ export default function Page2() {
         <h3 className="text-colton-comp uppercase">
           frenzy projects
         </h3>
+        <h3 className="text-timesnewroman">
+          frenzy projects
+        </h3>
         <p className="text-xl">
           Lorem ipsum dolor sit 123 amet consectetur adipisicing elit. Nobis dolor
           aspernatur natus at totam quae temporibus, optio mollitia numquam est ab

@@ -13,9 +13,9 @@ const VantaClouds = () => {
         CLOUDS({
           el: vantaRef.current,
           THREE,
-          mouseControls: true,
-          touchControls: true,
-          gyroControls: false,
+          mouseControls: false,
+          touchControls: false,
+          gyroControls: true,
           minHeight: 820.00,
           minWidth: 200.00,
           skyColor: 0xe4e6e8,

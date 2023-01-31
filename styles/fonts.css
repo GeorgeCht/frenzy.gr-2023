@@ -119,12 +119,14 @@
   font-family: 'Grotesque', Arial, Helvetica, sans-serif;
 }
 
-
 .text-colton-xwide {
   font-family: 'Colton XWide', Arial, Helvetica, sans-serif;
 }
 
-
 .text-colton-comp {
   font-family: 'Colton Comp', Arial, Helvetica, sans-serif;
+}
+
+.text-timesnewroman {
+  font-family: TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, serif;
 }

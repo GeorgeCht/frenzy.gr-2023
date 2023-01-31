@@ -25,12 +25,7 @@ a {
   box-sizing: border-box;
 }
 
-.preload {
-  display: block;
-  width: 30px;
-  height: 30px;
-  background: red;
-}
+
 
 /* Scroll hide */
 /* =============================================== */
@@ -59,11 +54,13 @@ body::-webkit-scrollbar {
 /* =============================================== */
 
 .blobs-container {
+  top: 0;
   width: 100vw;
   height: 100vh;
   display: inline-block;
   position: absolute;
-  top: 0;
+  mix-blend-mode: darken;
+  /* pointer-events: none; */
 }
 
 .blobs {
@@ -114,7 +111,7 @@ body::-webkit-scrollbar {
           animation-delay: calc(-0.2 * var(--blob-speed-scale));
 }
 .blobs > :nth-child(4) .blob {
-  opacity: .6;
+  opacity: .5;
   background-color: var(--blob-color-4);
   filter: blur(60px);
   -webkit-animation-delay: calc(-0.4 * var(--blob-speed-scale));
@@ -171,3 +168,54 @@ body::-webkit-scrollbar {
 @media (max-width: 2560px) { .blobs { --blob-size: 42.175vw } }
 @media (max-width: 1680px) { .blobs { --blob-size: 960px } }
 @media (max-width: 1024px) { .blobs { --blob-size: 720px } }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.bracket-link {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+.bracket-link > span {
+  border-bottom: 1px solid;
+  line-height: .8;
+}
+
+.bracket-link::before {
+  content: '【';
+  padding-right: 1.333em;
+}
+.bracket-link::after {
+  content: '】';
+  padding-left: 1.333em;
+}
+
+
+
+.main-heading-1 {
+  font-weight: 400;
+  font-size: 158px;
+  line-height: .9;
+  text-align: center;
+  letter-spacing: -0.01em;
+  color: #0B0B0D;
+}

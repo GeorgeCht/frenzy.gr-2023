@@ -1,9 +1,11 @@
-import Link from 'next/link';
+import Link from 'next/link'
+import Logo from '../components/Logo.jsx'
 
 const Header = () => {
   return (
     <header className="max-w-5xl flex justify-between mx-auto mb-8 px-4 py-8 border-b border-black/20">
       <h1 className="text-2xl font-semibold">Page Transition</h1>
+      <Logo width={99} height={12} fill={'#000'}/>
 
       <nav className="flex gap-4 text-lg text-blue-700">
         <Link href="/">Home</Link>

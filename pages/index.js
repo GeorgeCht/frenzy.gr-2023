@@ -1,10 +1,11 @@
 import Head from 'next/head';
+import LinkInBrackets from '../components/LinkInBrackets';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
   return (
     <section className="flex flex-col gap-8 items-center">
-      <h2 className="text-4xl font-semibold">Home page</h2>
+      <h1 className="main-heading-1 text-grotesque">Home page</h1>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis dolor
         aspernatur natus at totam quae temporibus, optio mollitia numquam est ab
@@ -20,6 +21,7 @@ export default function Home() {
         impedit voluptatem aperiam eveniet, reiciendis, minima ex. Consectetur
         totam voluptas quisquam.
       </p>
+      <LinkInBrackets url={"#"} isOutbound={true} innerText={"Proceed without audio"} />
     </section>
   );
 }
