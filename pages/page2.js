@@ -8,9 +8,15 @@ export default function Page2() {
         <Blurs />
       </section>
       <section className="flex flex-col gap-8 items-center">
-        <h2 className="text-4xl font-semibold bg-yellow-200 px-4 py-2">
+        <h2 className="text-4xl font-semibold bg-yellow-200 px-4 py-2 text-grotesque">
           Second Page
         </h2>
+        <h3 className="text-colton-xwide uppercase">
+          frenzy 2023
+        </h3>
+        <h3 className="text-colton-comp uppercase">
+          frenzy projects
+        </h3>
         <p className="text-xl">
           Lorem ipsum dolor sit 123 amet consectetur adipisicing elit. Nobis dolor
           aspernatur natus at totam quae temporibus, optio mollitia numquam est ab

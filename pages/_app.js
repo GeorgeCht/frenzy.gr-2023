@@ -3,13 +3,15 @@ import Layout from '../components/Layout.jsx'
 import Lenis from '@studio-freight/lenis'
 import Head from 'next/head'
 import '../styles/globals.css'
-import Script from 'next/script.js'
+import '../styles/fonts.css'
 
 function MyApp({ Component, pageProps }) {
 
+  // Preloader state
   const [isPreloading, setIsPreloading] = useState(true)
 
   useEffect(() => {
+
     setTimeout(() => {
       setIsPreloading(false)
     }, 2)
@@ -44,7 +46,6 @@ function MyApp({ Component, pageProps }) {
       }
     }
   }, [])
-
 
   return (
     <>
