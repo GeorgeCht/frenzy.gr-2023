@@ -1,7 +1,9 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import Layout from '../components/Layout.jsx';
-import Lenis from '@studio-freight/lenis';
-import '../styles/globals.css';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import Layout from '../components/Layout.jsx'
+import Lenis from '@studio-freight/lenis'
+import Head from 'next/head'
+import '../styles/globals.css'
+import Script from 'next/script.js'
 
 function MyApp({ Component, pageProps }) {
 
@@ -11,6 +13,12 @@ function MyApp({ Component, pageProps }) {
     setTimeout(() => {
       setIsPreloading(false)
     }, 2)
+
+    // Setup ThreeJS
+    const threeScript = document.createElement('script')
+    threeScript.setAttribute('id', 'threeScript')
+    threeScript.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js')
+    document.getElementsByTagName("head")[0].appendChild(threeScript);
 
     // Init lenis scroll
     const lenis = new Lenis({
@@ -28,12 +36,22 @@ function MyApp({ Component, pageProps }) {
       lenis.raf(time)
       requestAnimationFrame(raf)
     }
-    requestAnimationFrame(raf)  
+    requestAnimationFrame(raf)
+
+    return () => {
+      if (threeScript) {
+        threeScript.remove();
+      }
+    }
   }, [])
 
 
   return (
     <>
+      <Head>
+        <title>My page title</title>
+        <meta property="og:title" content="My page title" key="title" />
+      </Head>
       {isPreloading ? (
         <div>Loading here...</div>
       ) : (
