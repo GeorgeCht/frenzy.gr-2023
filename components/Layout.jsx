@@ -54,7 +54,7 @@ const Layout = ({ children }) => {
           mountOnEnter={true}
           unmountOnExit={true}
         >
-          <main className="p-4 mx-auto max-w-4xl">{children}</main>
+          <main className="">{children}</main>
         </Transition>
       </SwitchTransition>
     </>
