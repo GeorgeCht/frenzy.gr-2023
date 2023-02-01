@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import Marquee from '../components/Marquee';
 import LinkInBrackets from '../components/LinkInBrackets';
-import styles from '../styles/Home.module.css';
 
 export default function Home() {
   const texts = [
@@ -10,7 +9,7 @@ export default function Home() {
     { head: "Header 3", sub: "Subheader 3" },
   ];
   return (
-    <section className="flex flex-col gap-8 items-center">
+    <section className="flex flex-col w-full relative">
       <h1 className="main-heading-1 text-grotesque">Home page</h1>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis dolor
@@ -20,6 +19,8 @@ export default function Home() {
         nobis! Nulla veritatis ea eius!
       </p>
       <Marquee 
+        rotate="2"
+        rotateIncline="left"
         textColor="#FFF" 
         backgroundColor="#0B0B0D" 
         isOutbound={false}
@@ -39,6 +40,17 @@ export default function Home() {
       </p>
       <LinkInBrackets url={"#"} isOutbound={true} innerText={"Proceed without audio"} />
 
+      <div className="block h-[100vh]">
+
+      </div>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
+        voluptatem voluptas ipsa voluptatibus nihil totam a sequi vel tempore
+        incidunt. Possimus, obcaecati soluta non in nostrum eaque nemo quod
+        adipisci eos architecto expedita eum quis amet dolorem voluptas quas
+        impedit voluptatem aperiam eveniet, reiciendis, minima ex. Consectetur
+        totam voluptas quisquam.
+      </p>
 
     </section>
   );

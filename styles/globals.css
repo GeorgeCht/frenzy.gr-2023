@@ -65,7 +65,7 @@ body::-webkit-scrollbar {
 
 .blobs {
   --blob-size: 47.333vw;
-  --blob-speed: 17s;
+  --blob-speed: 2.125s;
   --blob-height-multi: .42;
   --blob-speed-scale: calc(0.75 * var(--blob-speed));
   --blob-speed-move: calc(1 * var(--blob-speed));

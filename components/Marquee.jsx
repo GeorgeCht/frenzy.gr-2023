@@ -1,29 +1,50 @@
-
+import { useEffect, useRef } from "react"
+const { gsap } = require("gsap/dist/gsap");
+const { ScrollTrigger } = require("gsap/dist/ScrollTrigger");
 
 const Marquee = (props) => {
 
+  gsap.registerPlugin(ScrollTrigger)
+  const marqueeRef = useRef(null)
   function removeFirstWord(str) {
     return str.slice(str.indexOf(' ') + 1)
   }
+
+  useEffect(() => {
+    gsap.to(marqueeRef, {
+      scrollTrigger: {
+        trigger: "#__next",
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+      },
+      yPercent: 50,
+      scale: 3,
+    })
+  }, [])
   
   return (
-    <div className="marquee-container">
+    <div className={"marquee-container " + (props.rotateIncline == "left" ? "-" : "") + (props.rotate ? `rotate-${props.rotate}` : "")} ref={marqueeRef}>
       <div className="marquee-wrapper flex flex-nowrap" style={{backgroundColor: props.backgroundColor}}>
 
-        
-        {props.textContent.map((content, index) => (
-          <div key={index} className="flex py-2">
-            <span className="">
-              <h4 className="text-colton-xwide uppercase mx-6" style={{color: props.textColor}}>{content.head}</h4>
-            </span>
-            <span className="">
-              <div className="justfied-container w-[136px] mx-6">
-                <p className="text-grotesque uppercase" style={{color: props.textColor}}>{content.sub.split(' ')[0]}</p>
-                <p className="text-grotesque uppercase text-right" style={{color: props.textColor}}>{removeFirstWord(content.sub)}</p>
+        {[...Array(3)].map((_, index) => (
+          <div key={index} className="flex">
+            {props.textContent.map((content, contentIndex) => (
+              <div key={contentIndex} className="flex py-2">
+                <span>
+                  <h4 className="text-colton-xwide uppercase mx-6" style={{color: props.textColor}}>{content.head}</h4>
+                </span>
+                <span>
+                  <div className="w-[136px] mx-6">
+                    <p className="text-grotesque uppercase" style={{color: props.textColor}}>{content.sub.split(' ')[0]}</p>
+                    <p className="text-grotesque uppercase text-right" style={{color: props.textColor}}>{removeFirstWord(content.sub)}</p>
+                  </div>
+                </span>
               </div>
-            </span>
+            ))}
           </div>
         ))}
+        
 
       </div>
     </div>
