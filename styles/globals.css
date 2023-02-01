@@ -169,6 +169,40 @@ body::-webkit-scrollbar {
 @media (max-width: 1680px) { .blobs { --blob-size: 960px } }
 @media (max-width: 1024px) { .blobs { --blob-size: 720px } }
 
+/* Marquee */
+/* =============================================== */
+/* =============================================== */
+
+.marquee-container span {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.marquee-container span::after {
+  content: '';
+  width: 1px;
+  height: 100%;
+  position: absolute;
+  display: block;
+  background-color: #FFF;
+  top: 0;
+}
+
+.marquee-container span h4 {
+  font-weight: 800;
+  font-size: 30px;
+  line-height: .9;
+  letter-spacing: -0.01em;
+}
+
+.marquee-container span p {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
 
 
 
