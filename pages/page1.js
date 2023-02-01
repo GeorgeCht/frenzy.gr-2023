@@ -23,6 +23,8 @@ export default function Page1() {
           ]}
         />
       </section>
+      <div className="block h-[100vh]"></div>
+      <div className="block h-[100vh]"></div>
     </>
   );
 }

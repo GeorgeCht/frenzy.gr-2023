@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react"
-const { gsap } = require("gsap/dist/gsap");
-const { ScrollTrigger } = require("gsap/dist/ScrollTrigger");
+import { gsap } from "gsap/dist/gsap"
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger"
 
 const Marquee = (props) => {
 
@@ -11,21 +11,23 @@ const Marquee = (props) => {
   }
 
   useEffect(() => {
-    gsap.to(marqueeRef, {
+    gsap.to(marqueeRef.current, {
       scrollTrigger: {
+        id: 1,
         trigger: "#__next",
         start: "top top",
         end: "bottom top",
         scrub: true,
       },
-      yPercent: 50,
-      scale: 3,
+      // yPercent: 50,
+      marginLeft: -450,
+      rotate: 1.333,
     })
   }, [])
   
   return (
     <div className={"marquee-container " + (props.rotateIncline == "left" ? "-" : "") + (props.rotate ? `rotate-${props.rotate}` : "")} ref={marqueeRef}>
-      <div className="marquee-wrapper flex flex-nowrap" style={{backgroundColor: props.backgroundColor}}>
+      <div className="marquee-wrapper flex flex-nowrap -ml-3" style={{backgroundColor: props.backgroundColor}}>
 
         {[...Array(3)].map((_, index) => (
           <div key={index} className="flex">

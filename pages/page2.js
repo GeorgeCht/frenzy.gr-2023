@@ -4,9 +4,6 @@ import VantaClouds from "../components/VantaClouds.jsx";
 export default function Page2() {
   return (
     <>
-      <section className="blurs-intro">
-        <Blurs />
-      </section>
       <section className="flex flex-col gap-8 items-center">
         <h2 className="text-4xl font-semibold bg-yellow-200 px-4 py-2 text-grotesque">
           Second Page

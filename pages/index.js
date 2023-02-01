@@ -10,6 +10,7 @@ export default function Home() {
   ];
   return (
     <section className="flex flex-col w-full relative">
+      <div className="block h-[100vh]"></div>
       <h1 className="main-heading-1 text-grotesque">Home page</h1>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis dolor

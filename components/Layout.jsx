@@ -22,6 +22,7 @@ const Layout = ({ children }) => {
         ease: 'power4',
       }
     );
+    
   };
 
   const onPageExit = (node) => {
