@@ -43,8 +43,8 @@ body::-webkit-scrollbar {
 /* =============================================== */
 /* =============================================== */
 
-.noise-container { opacity: 0; animation-delay: .1s; animation-duration: 1.5s; animation-name: noisegrain-intro; animation-timing-function: ease-out; animation-iteration-count: 1; -webkit-animation-fill-mode: forwards; animation-fill-mode: forwards; }
-.noise { animation: grain 6s steps(10) infinite; background-image: url('/assets/noise-full.png'); background-repeat: repeat; height: 300%; left: -50%; opacity: .035; position: fixed; top: -100%; width: 300%; z-index: 100; pointer-events: none; }
+.noise-container { opacity: 0; z-index: 99; animation-delay: .1s; animation-duration: 1.5s; animation-name: noisegrain-intro; animation-timing-function: ease-out; animation-iteration-count: 1; -webkit-animation-fill-mode: forwards; animation-fill-mode: forwards; }
+.noise { animation: grain 6s steps(10) infinite; z-index: 99; background-image: url('/assets/noise-full.png'); background-repeat: repeat; height: 300%; left: -50%; opacity: .035; position: fixed; top: -100%; width: 300%; z-index: 100; pointer-events: none; }
 @keyframes noisegrain-intro { 0% { opacity: 0; } 100% { opacity: 1; } }
 @keyframes grain{0%,100%{transform:translate(0,0)}10%{transform:translate(-5%,-10%)}20%{transform:translate(-15%,5%)}30%{transform:translate(7%,-25%)}40%{transform:translate(-5%,25%)}50%{transform:translate(-15%,10%)}60%{transform:translate(15%,0)}70%{transform:translate(0,15%)}80%{transform:translate(3%,35%)}90%{transform:translate(-10%,10%)}}
 
@@ -204,9 +204,40 @@ body::-webkit-scrollbar {
   letter-spacing: -0.02em;
 }
 
+/* Vanta Clouds */
+/* =============================================== */
+/* =============================================== */
 
+.vantaClouds-container .top-fade {
+  z-index: 1;
+  background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+}
 
+.vantaClouds-container canvas {
+  bottom: 0;
+  top: unset !important;
+}
 
+.vantaClouds-container .inner-gallery {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  top: 8rem;
+}
+
+.vantaClouds-container .image__1 {
+  filter: blur(2.5px);
+  z-index: 1;
+}
+.vantaClouds-container .image__2,
+.vantaClouds-container .image__3,
+.vantaClouds-container .image__4 {
+  z-index: 2;
+}
+.vantaClouds-container .image__5 {
+  filter: blur(4.5px);
+  z-index: 1;
+}
 
 
 

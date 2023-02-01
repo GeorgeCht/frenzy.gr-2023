@@ -20,8 +20,7 @@ export default function Home() {
         nobis! Nulla veritatis ea eius!
       </p>
       <Marquee 
-        rotate="2"
-        rotateIncline="left"
+        rotate={2}
         textColor="#FFF" 
         backgroundColor="#0B0B0D" 
         isOutbound={false}

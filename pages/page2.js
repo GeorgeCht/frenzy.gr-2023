@@ -36,6 +36,9 @@ export default function Page2() {
           Button
         </a>
       </section>
+      <div className="block h-[100vh]"></div>
+      <div className="block h-[100vh]"></div>
+      <div className="block h-[100vh]"></div>
       <VantaClouds />
       
       <p>
@@ -107,6 +110,10 @@ export default function Page2() {
           rerum, sed eum facilis dolorum a veniam cumque sit molestias quaerat
           nobis! Nulla veritatis ea eius!
         </p>
+        <div className="block h-[100vh]"></div>
+        <div className="block h-[100vh]"></div>
+        <div className="block h-[100vh]"></div>
+        <div className="block h-[100vh]"></div>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis dolor
           aspernatur natus at totam quae temporibus, optio mollitia numquam est ab

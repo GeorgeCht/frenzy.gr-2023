@@ -21,12 +21,14 @@ const Marquee = (props) => {
       },
       // yPercent: 50,
       marginLeft: -450,
-      rotate: 1.333,
+    })
+    gsap.set(marqueeRef.current, {
+      rotate: props.rotate
     })
   }, [])
   
   return (
-    <div className={"marquee-container " + (props.rotateIncline == "left" ? "-" : "") + (props.rotate ? `rotate-${props.rotate}` : "")} ref={marqueeRef}>
+    <div className={"marquee-container"} ref={marqueeRef}>
       <div className="marquee-wrapper flex flex-nowrap -ml-3" style={{backgroundColor: props.backgroundColor}}>
 
         {[...Array(3)].map((_, index) => (
