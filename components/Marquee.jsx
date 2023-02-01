@@ -23,7 +23,7 @@ const Marquee = (props) => {
       marginLeft: -450,
     })
     gsap.set(marqueeRef.current, {
-      rotate: props.rotate
+      rotate: `${props.rotate}deg`
     })
   }, [])
   

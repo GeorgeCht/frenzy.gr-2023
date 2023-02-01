@@ -1,5 +1,6 @@
-import Blurs from "../components/Blurs.jsx";
-import VantaClouds from "../components/VantaClouds.jsx";
+import Blurs from "../components/Blurs";
+import VantaClouds from "../components/VantaClouds";
+import Marquee from "../components/Marquee";
 
 export default function Page2() {
   return (
@@ -37,9 +38,20 @@ export default function Page2() {
         </a>
       </section>
       <div className="block h-[100vh]"></div>
-      <div className="block h-[100vh]"></div>
-      <div className="block h-[100vh]"></div>
+      <h2>starting vantaclouds</h2>
       <VantaClouds />
+      <h2>ending vantaclouds</h2>
+      <Marquee 
+        rotate={0.5}
+        textColor="#FFF" 
+        backgroundColor="#0B0B0D" 
+        isOutbound={false}
+        textContent={[
+          { head: "Digital",  sub: "Discover what we do" },
+          { head: "Agency",   sub: "Learn more about us" },
+          { head: "2023",     sub: "Frenzy what we do" },
+        ]}
+      />
       
       <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis dolor
