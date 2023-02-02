@@ -25,7 +25,12 @@ a {
   box-sizing: border-box;
 }
 
-
+/* Header */
+/* =============================================== */
+/* =============================================== */
+#__next > header {
+  z-index: 99;
+}
 
 /* Scroll hide */
 /* =============================================== */
@@ -47,7 +52,6 @@ body::-webkit-scrollbar {
 .noise { animation: grain 6s steps(10) infinite; z-index: 99; background-image: url('/assets/noise-full.png'); background-repeat: repeat; height: 300%; left: -50%; opacity: .035; position: fixed; top: -100%; width: 300%; z-index: 100; pointer-events: none; }
 @keyframes noisegrain-intro { 0% { opacity: 0; } 100% { opacity: 1; } }
 @keyframes grain{0%,100%{transform:translate(0,0)}10%{transform:translate(-5%,-10%)}20%{transform:translate(-15%,5%)}30%{transform:translate(7%,-25%)}40%{transform:translate(-5%,25%)}50%{transform:translate(-15%,10%)}60%{transform:translate(15%,0)}70%{transform:translate(0,15%)}80%{transform:translate(3%,35%)}90%{transform:translate(-10%,10%)}}
-
 
 /* Blurs */
 /* =============================================== */
@@ -297,4 +301,198 @@ body::-webkit-scrollbar {
   line-height: .9;
   text-align: center;
   letter-spacing: -0.01em;
+}
+
+.main-text-2 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.preloader {
+  z-index: 999999 !important;
+  pointer-events: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  transform: translate(-50%, -50%);
+}
+
+.vhs {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  transform: translate(-50%, -50%);
+  background: #0B0B0D;
+  overflow: hidden;
+  -webkit-animation: blue-me 5ms infinite;
+          animation: blue-me 5ms infinite;
+}
+
+.vhs:after {
+  box-shadow: inset 0 0 3em rgba(0, 0, 0, 0.75);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  content: "";
+}
+
+@keyframes blue-me {
+  28% { background: #0B0B0D; }
+  30% { background: rgba(#0B0B0D, 0.95); }
+  33% { background: #0B0B0D; }
+  34% { background: rgba(#0B0B0D, 0.9); }
+  35% { background: #0B0B0D; }
+}
+@keyframes blur {
+  0%    { filter: blur(.75px); opacity: 0.8; }
+  50%   { filter: blur(.75px); opacity: 1;   }
+  100%  { filter: blur(.75px); opacity: 0.8; }
+}
+@keyframes track {
+  40% { opacity: 1; top: 0; left: 0; transform: scale(1, 1); transform: skew(0, 0); }
+  41% { opacity: 0.8; top: 0px; left: -100px; transform: scale(1, 1.2); transform: skew(50deg, 0); }
+  42% { opacity: 0.8; top: 0px; left: 100px; transform: scale(1, 1.2); transform: skew(-80deg, 0); }
+  43% { opacity: 1; top: 0; left: 0; transform: scale(1, 1); transform: skew(0, 0); }
+}
+
+.vhs-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  -webkit-animation: track 5ms infinite;
+          animation: track 5ms infinite;
+  position: relative;
+  margin: 4em;
+  height: calc( 100% - 8em );
+}
+.vhs-container span {
+  -webkit-animation: blur 30ms infinite;
+          animation: blur 30ms infinite;
+}
+.vhs-container span > * {
+  text-shadow: 1px 1px #008000, -1px -1px #FD1D1D;
+  color: #F2F2F2;
+}
+
+.vhs-container .logo {
+  display: flex;
+  justify-content: center;
+}
+
+.vhs-container .loader h2 {
+  font-family: 'Basis Grotesque Pro';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 158px;
+  line-height: 1;
+  text-align: center;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.vhs-container .loader p {
+  font-weight: 400;
+  font-size: 15px;
+  text-align: center;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.vhs-container .copyrights > p {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1;
+  text-align: center;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.screen-bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.line {
+  width: 100%;
+  height: 3px;
+  position: relative;
+  -webkit-animation: appear 1s infinite, flick 1s infinite, big-jump 5ms infinite;
+          animation: appear 1s infinite, flick 1s infinite, big-jump 5ms infinite;
+}
+.line .white {
+  background: white;
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 4px;
+}
+.line .red {
+  background: red;
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 1px;
+}
+.line .green {
+  background: green;
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 1px;
+}
+
+@keyframes appear {
+  0% { filter: blur(5px); opacity: 0.85; }
+  50% { filter: blur(3px); opacity: 0.85; }
+  100% { filter: blur(4px); opacity: 0.85; }
+}
+@keyframes big-jump {
+  0% { top: 0; }
+  10% { top: -100px; }
+  12% { top: 0; }
+  54% { top: 0; }
+  55% { top: -300px; }
+  56% { top: 0; }
+  86% { top: 0; }
+  87% { top: -600px; }
+  88% { top: 0; }
+}
+
+@keyframes showHide {
+  1% { opacity: 0; }
+  10% { opacity: 1; }
+  19% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@media (max-width: 480px) {
+  .vhs-container .loader h2 {
+    font-size: 33.333vw;
+  }
+  .vhs-container {
+    margin: 3.333em 20px;
+  }
 }

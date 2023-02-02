@@ -37,7 +37,6 @@ export default function Page2() {
           Button
         </a>
       </section>
-      <div className="block h-[100vh]"></div>
       <h2>starting vantaclouds</h2>
       <VantaClouds />
       <h2>ending vantaclouds</h2>

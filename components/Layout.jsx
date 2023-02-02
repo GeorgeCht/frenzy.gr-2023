@@ -8,43 +8,70 @@ const Layout = ({ children }) => {
   const router = useRouter();
 
   const onPageEnter = (node) => {
-    gsap.fromTo(
-      node,
-      {
-        y: 15,
-        autoAlpha: 0,
-        ease: 'power4',
+    // gsap.to(node, {
+    //   autoAlpha: 0,
+    //   duration: 1.025,
+    //   ease: 'power4.inOut'
+    // })
+    gsap.to(`.transition-block`, {
+      y: '100%',
+      delay: 0.275,
+      duration: 1.215,
+      ease: 'power4.inOut',
+      onComplete: () => {
+        gsap.set(`.transition-block`, { y: '-100%' })
       },
-      {
-        y: 0,
-        autoAlpha: 1,
-        duration: 0.915,
-        ease: 'power4',
-      }
-    );
-    
+    })
+    gsap.to(`.transition-block .transition-inner-above`, {
+      y: 0,
+      delay: 0.265,
+      duration: 1.275,
+      ease: 'power4.inOut'
+    })
+    gsap.to(`.transition-block .transition-inner-below`, {
+      y: 0,
+      delay: 0.275,
+      duration: 1.015,
+      ease: 'power4.inOut'
+    })
+
   };
 
   const onPageExit = (node) => {
-    gsap.fromTo(
-      node,
-      {
-        y: 0,
-        autoAlpha: 1,
-        ease: 'power4.out',
-      },
-      {
-        y: -15,
-        autoAlpha: 0,
-        duration: 0.675,
-        ease: 'power4.inOut',
-      }
-    );
+    // gsap.to(`.transition-block`, {
+    //   y: 0,
+    //   duration: 1.025,
+    //   ease: 'power4.inOut'
+    // })
+  };
+
+  const onPageClick = (e) => {
+    // console.log(e)
+
+    gsap.to(`.transition-block`, {
+      y: 0,
+      duration: .825,
+      ease: 'power4.inOut'
+    })
+    gsap.to(`.transition-block .transition-inner-above`, {
+      y: '-120%',
+      duration: .825,
+      delay: .125,
+      ease: 'power4.inOut'
+    })
+    gsap.to(`.transition-block .transition-inner-below`, {
+      y: '120%',
+      duration: .625,
+      ease: 'power4.inOut'
+    })
   };
 
   return (
     <>
-      <Header />
+      <Header
+        onClick={onPageClick}
+        pathName={router.pathname}
+      />
       <SwitchTransition>
         <Transition
           key={router.pathname} // our route as a key

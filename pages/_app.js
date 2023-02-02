@@ -1,26 +1,29 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import Layout from '../components/Layout.jsx'
+import Layout from '../components/Layout'
+
 import Lenis from '@studio-freight/lenis'
 import Head from 'next/head'
 import '../styles/globals.css'
 import '../styles/fonts.css'
+import Preloader from '../components/Preloader'
 
 function MyApp({ Component, pageProps }) {
 
   // Preloader state
   const [isPreloading, setIsPreloading] = useState(true)
+  const preloadTime = Math.floor(Math.random() * 2500) + 1000
 
   useEffect(() => {
 
     setTimeout(() => {
       setIsPreloading(false)
-    }, 2)
+    }, preloadTime)
 
     // Setup ThreeJS
-    const threeScript = document.createElement('script')
-    threeScript.setAttribute('id', 'threeScript')
-    threeScript.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js')
-    document.getElementsByTagName("head")[0].appendChild(threeScript);
+    // const threeScript = document.createElement('script')
+    // threeScript.setAttribute('id', 'threeScript')
+    // threeScript.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js')
+    // document.getElementsByTagName("head")[0].appendChild(threeScript);
 
     // Init lenis scroll
     const lenis = new Lenis({
@@ -40,11 +43,7 @@ function MyApp({ Component, pageProps }) {
     }
     requestAnimationFrame(raf)
 
-    return () => {
-      if (threeScript) {
-        threeScript.remove();
-      }
-    }
+    return () => { }
   }, [])
 
   return (
@@ -54,7 +53,7 @@ function MyApp({ Component, pageProps }) {
         <meta property="og:title" content="My page title" key="title" />
       </Head>
       {isPreloading ? (
-        <div>Loading here...</div>
+        <Preloader timer={preloadTime} />
       ) : (
         <Layout>
           <Component {...pageProps} />
