@@ -32,6 +32,20 @@ a {
   z-index: 99;
 }
 
+#__next > header .menu-item {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.02em;
+}
+
+#__next > header .menu-item > span {
+  display: block;
+  margin-top: 2px;
+}
+
 /* Scroll hide */
 /* =============================================== */
 /* =============================================== */
