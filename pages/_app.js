@@ -59,8 +59,8 @@ function MyApp({ Component, pageProps }) {
           <Component {...pageProps} />
         </Layout>
       )}
-      <div className="noise-container z-[10000]">
-        <div className="noise z-[10000]"></div>
+      <div className="noise-container fixed z-[10000]">
+        <div className="noise fixed z-[10000]"></div>
       </div>
     </>
   );

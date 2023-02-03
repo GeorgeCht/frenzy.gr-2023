@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Logo from '../components/Logo'
 import gsap from 'gsap'
+import Blurs from './Blurs';
 
 const Header = (props) => {
 
@@ -161,32 +162,36 @@ const Header = (props) => {
           </svg>
           <span className="text-grotesque uppercase pl-4 cursor-pointer">English</span>
         </div>
-        <div className="menu-block pointer-events-none flex w-screen h-screen fixed justify-center left-0 bg-[#acac9e] z-[999] -translate-y-full">
-          <div className="menu-inner-above inline-block w-screen h-[10vw] bg-[#acac9e] absolute top-[5vh] rounded-t-[50%] translate-y-0"></div>
-          {/* <h4 className="text-white flex text-grotesque items-center text-center justify-center main-heading-2 uppercase">test</h4> */}
+        <div className="menu-block flex w-screen h-screen absolute justify-center left-0 bg-[#E9E4E4] z-[999] -translate-y-full">
+          <div className="menu-inner-above inline-block w-screen h-[10vw] bg-[#E9E4E4] absolute top-[5vh] rounded-t-[50%] translate-y-0"></div>
           <div className="menu-inner-container flex flex-col justify-between w-full z-[1000] px-14 pt-36 pb-12">
 
             <div className="menu-items-wrapper flex flex-col">
               <ul>
               {menuItems.map((item, itemIndex) => (
-                  <li key={itemIndex}>
-                    <Link href={item.url} className="text-9xl">{item.title}<i>0{itemIndex+1}</i></Link>
-                  </li>
+                <li key={itemIndex}>
+                  <Link href={item.url} onClick={() => { toggleMenu(), props.onClick() }} className="text-9xl">{item.title}<i>0{itemIndex+1}</i></Link>
+                </li>
               ))}
               </ul>
             </div>
 
             <div className="menu-footer-wrapper">
-              <p>Footer menu here</p>
               <div className="menu-social flex gap-5"> 
                 {socialMediaItems.map((item, itemIndex) => (
                   <a href={item.url} className="text-grotesque uppercase" key={itemIndex}>{item.title}</a>
                 ))}
               </div>
+              <p className="menu-footnotes text-grotesque flex">
+                <p>full service 360 agency</p>
+                <p><a className='flex' href="tel:+304564465161">tel: +302105862900</a></p>
+                <p><a className='flex' href="tel:+304564465161">mail: info@frenzy.gr</a></p>
+              </p>
             </div>
 
           </div>
-          <div className="menu-inner-below inline-block w-screen h-[10vw] bg-[#acac9e] absolute bottom-[10vh] rounded-b-[50%] translate-y-0"></div>
+          <Blurs />
+          <div className="menu-inner-below inline-block w-screen h-[10vw] bg-[#E9E4E4] absolute bottom-[10vh] rounded-b-[50%] translate-y-0"></div>
         </div>
       </header>
     </>

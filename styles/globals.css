@@ -51,21 +51,25 @@ a {
 /* =============================================== */
 
 @layer components {
+
   header .menu-block .menu-items-wrapper li a {
     @apply relative;
     line-height: .9;
   }
+
   header .menu-block .menu-items-wrapper li:nth-child(even) a {
     @apply inline-block uppercase italic cursor-pointer -mt-3;
     font-family: TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, serif;
     letter-spacing: -0.055em;
   }
+
   header .menu-block .menu-items-wrapper li:nth-child(odd) a {
     @apply uppercase cursor-pointer;
     font-family: 'Grotesque', Arial, Helvetica, sans-serif;
     font-weight: 400;
     letter-spacing: -0.04em;
   }
+
   header .menu-block .menu-items-wrapper li a i {
     @apply inline-block absolute top-7 ml-5;
     font-family: 'Grotesque', Arial, Helvetica, sans-serif;
@@ -74,17 +78,28 @@ a {
     font-size: 20px;
     letter-spacing: -0.02em;
   }
+
   header .menu-block .menu-items-wrapper li:nth-child(even) a i {
     @apply top-3 ml-10;
   }
+
   header .menu-block .menu-footer-wrapper .menu-social a {
     font-weight: 500;
     font-size: 20px;
-    line-height: 1;
+    line-height: .75;
+    letter-spacing: -0.02em;
+    border-bottom: 1px solid;
+  }
+
+  header .menu-block .menu-footer-wrapper .menu-footnotes {
+    @apply flex uppercase pt-6;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.1;
+    flex-direction: column;
     letter-spacing: -0.02em;
   }
 
-  
 }
 
 /* Scroll hide */
@@ -131,10 +146,6 @@ body::-webkit-scrollbar {
   --blob-speed-rotate: calc(3.333 * var(--blob-speed));
   --blob-opacity: 0.5;
   --blob-blur: 90px;
-  --blob-color-1: hsl(35deg 97% 63%);
-  --blob-color-2: hsl(169deg 51% 47%);
-  --blob-color-3: hsl(276deg 51% 47%);
-  --blob-color-4: hsl(0deg 98% 55%);
   position: absolute;
   filter: blur(var(--blob-blur));
   width: 100%;
