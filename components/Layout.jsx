@@ -46,8 +46,6 @@ const Layout = ({ children }) => {
   };
 
   const onPageClick = (e) => {
-    // console.log(e)
-
     gsap.to(`.transition-block`, {
       y: 0,
       duration: .825,
@@ -82,7 +80,7 @@ const Layout = ({ children }) => {
           mountOnEnter={true}
           unmountOnExit={true}
         >
-          <main className="mx-auto">{children}</main>
+          <main className="mx-auto z-10">{children}</main>
         </Transition>
       </SwitchTransition>
     </>

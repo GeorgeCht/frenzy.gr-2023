@@ -3,14 +3,13 @@ import gsap from 'gsap'
 import Logo from '../components/Logo'
 
 const Preloader = (props) => {
-  const [showBanner, setShowBanner] = useState(false)
+  
   const [loadingPercentage, setLoadingPercentage] = useState(0)
 
   useEffect(() => {
     // const firstVisit = localStorage.getItem("firstVisit") || "true";
     // if (firstVisit === "true") {
       // localStorage.setItem("firstVisit", "false");
-      setShowBanner(true)
 
       setTimeout(() => {
         gsap.to(`.preloader .vhs`, {
@@ -26,28 +25,22 @@ const Preloader = (props) => {
           ease: 'Power2.easeOut'
         })
         gsap.to(`.preloader`, { width: '0', height: '0', delay: 0.665, })
-      }, props.timer-215)
+      }, props.timer - 215)
       
-
       // simulate loading
       const intervalId = setInterval(() => {
         setLoadingPercentage((prevPercentage) => {
           if (prevPercentage >= 100) {
             clearInterval(intervalId)
-            setShowBanner(false)
-            return 0
+            return 100
           }
-          console.log(prevPercentage)
-          return prevPercentage <= 90 ? prevPercentage + Math.floor(Math.random() * 10) + 9 : prevPercentage
-          
+          return prevPercentage <= 84 ? prevPercentage + Math.floor(Math.random() * 15) + 5 : 100
         })
-      }, Math.floor(Math.random() * 350) + 25)
+      }, Math.floor(Math.random() * 150) + 25)
 
       setTimeout(() => intervalId && clearInterval(intervalId), 2500)
     // }
   }, [])
-
-  if (!showBanner) return null
 
   return (
     <div className="preloader">

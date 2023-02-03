@@ -46,6 +46,47 @@ a {
   margin-top: 2px;
 }
 
+/* Mega menu */
+/* =============================================== */
+/* =============================================== */
+
+@layer components {
+  header .menu-block .menu-items-wrapper li a {
+    @apply relative;
+    line-height: .9;
+  }
+  header .menu-block .menu-items-wrapper li:nth-child(even) a {
+    @apply inline-block uppercase italic cursor-pointer -mt-3;
+    font-family: TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, serif;
+    letter-spacing: -0.055em;
+  }
+  header .menu-block .menu-items-wrapper li:nth-child(odd) a {
+    @apply uppercase cursor-pointer;
+    font-family: 'Grotesque', Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    letter-spacing: -0.04em;
+  }
+  header .menu-block .menu-items-wrapper li a i {
+    @apply inline-block absolute top-7 ml-5;
+    font-family: 'Grotesque', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: -0.02em;
+  }
+  header .menu-block .menu-items-wrapper li:nth-child(even) a i {
+    @apply top-3 ml-10;
+  }
+  header .menu-block .menu-footer-wrapper .menu-social a {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  
+}
+
 /* Scroll hide */
 /* =============================================== */
 /* =============================================== */
@@ -60,10 +101,10 @@ body::-webkit-scrollbar {
 
 /* Noise */
 /* =============================================== */
-/* =============================================== */
+/* ===============================================z-[9999] */
 
-.noise-container { opacity: 0; z-index: 99; animation-delay: .1s; animation-duration: 1.5s; animation-name: noisegrain-intro; animation-timing-function: ease-out; animation-iteration-count: 1; -webkit-animation-fill-mode: forwards; animation-fill-mode: forwards; }
-.noise { animation: grain 6s steps(10) infinite; z-index: 99; background-image: url('/assets/noise-full.png'); background-repeat: repeat; height: 300%; left: -50%; opacity: .035; position: fixed; top: -100%; width: 300%; z-index: 100; pointer-events: none; }
+.noise-container { opacity: 0; animation-delay: .1s; animation-duration: 1.5s; animation-name: noisegrain-intro; animation-timing-function: ease-out; animation-iteration-count: 1; -webkit-animation-fill-mode: forwards; animation-fill-mode: forwards; }
+.noise { animation: grain 6s steps(10) infinite; background-image: url('/assets/noise-full.png'); background-repeat: repeat; height: 300%; left: -50%; opacity: .035; position: fixed; top: -100%; width: 300%; z-index: 100; pointer-events: none; }
 @keyframes noisegrain-intro { 0% { opacity: 0; } 100% { opacity: 1; } }
 @keyframes grain{0%,100%{transform:translate(0,0)}10%{transform:translate(-5%,-10%)}20%{transform:translate(-15%,5%)}30%{transform:translate(7%,-25%)}40%{transform:translate(-5%,25%)}50%{transform:translate(-15%,10%)}60%{transform:translate(15%,0)}70%{transform:translate(0,15%)}80%{transform:translate(3%,35%)}90%{transform:translate(-10%,10%)}}
 
@@ -415,7 +456,6 @@ body::-webkit-scrollbar {
 }
 
 .vhs-container .loader h2 {
-  font-family: 'Basis Grotesque Pro';
   font-style: normal;
   font-weight: 700;
   font-size: 158px;
