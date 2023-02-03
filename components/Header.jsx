@@ -194,7 +194,7 @@ const Header = (props) => {
             </div>
 
           </div>
-          {/* <Blurs /> */}
+          <Blurs className="fixed z-[1000]" />
           <div className="menu-inner-below inline-block w-screen h-[10vw] bg-[#E9E4E4] absolute bottom-[10vh] rounded-b-[50%] translate-y-0"></div>
         </div>
       </header>

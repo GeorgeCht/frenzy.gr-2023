@@ -12,6 +12,7 @@ function MyApp({ Component, pageProps }) {
 
   // Preloader state
   const [isPreloading, setIsPreloading] = useState(true)
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const router = useRouter()
   const preloadTime = Math.floor(Math.random() * 2500) + 1000
   
@@ -22,6 +23,16 @@ function MyApp({ Component, pageProps }) {
       setIsPreloading(false)
     }, preloadTime)
 
+    const mouseMoveHandler = (event) => {
+      setMousePosition({
+        x: event.clientX,
+        y: event.clientY,
+      })
+    }
+
+    document.body.addEventListener(`mousemove`, mouseMoveHandler)
+    // show mousePosition.x
+    
     // First time visitors redirected to /intro page
     const firstVisit = localStorage.getItem("firstVisit") || "true"
     if (firstVisit === "true") {
@@ -53,7 +64,9 @@ function MyApp({ Component, pageProps }) {
     }
     requestAnimationFrame(raf)
 
-    return () => { }
+    return () => {
+      document.body.removeEventListener(`mousemove`, mouseMoveHandler)
+    }
   }, [])
 
   return (
