@@ -1,23 +1,33 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import Layout from '../components/Layout'
-
 import Lenis from '@studio-freight/lenis'
 import Head from 'next/head'
 import '../styles/globals.css'
 import '../styles/fonts.css'
 import Preloader from '../components/Preloader'
+import gsap from 'gsap'
+import { useRouter } from 'next/router'
 
 function MyApp({ Component, pageProps }) {
 
   // Preloader state
   const [isPreloading, setIsPreloading] = useState(true)
+  const router = useRouter()
   const preloadTime = Math.floor(Math.random() * 2500) + 1000
+  
 
   useEffect(() => {
 
     setTimeout(() => {
       setIsPreloading(false)
     }, preloadTime)
+
+    // First time visitors redirected to /intro page
+    const firstVisit = localStorage.getItem("firstVisit") || "true"
+    if (firstVisit === "true") {
+      localStorage.setItem("firstVisit", "false")
+      router.push(`/page1`)
+    }
 
     // Setup ThreeJS
     // const threeScript = document.createElement('script')

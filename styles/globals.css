@@ -52,15 +52,31 @@ a {
 
 @layer components {
 
+  header .menu-block {
+    --letter-height: 110px;
+  }
+
   header .menu-block .menu-items-wrapper li a {
     @apply relative;
     line-height: .9;
+    max-height: calc( var(--letter-height) - 10px );
+  }
+  
+  header .menu-block .menu-items-wrapper li a:hover span:nth-child(1) {
+    transform: translateY( calc( -1 * var(--letter-height) - 6px  ) );
+  }
+  header .menu-block .menu-items-wrapper li a:hover span:nth-child(2) {
+    transform: translateY( calc( -1 * var(--letter-height) - 6px  ) );
   }
 
   header .menu-block .menu-items-wrapper li:nth-child(even) a {
-    @apply inline-block uppercase italic cursor-pointer -mt-3;
+    @apply uppercase italic cursor-pointer -mt-3;
     font-family: TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, serif;
     letter-spacing: -0.055em;
+  }
+
+  header .menu-block .menu-items-wrapper li:nth-child(even) a span {
+    @apply pr-16;
   }
 
   header .menu-block .menu-items-wrapper li:nth-child(odd) a {
@@ -70,8 +86,16 @@ a {
     letter-spacing: -0.04em;
   }
 
+  header .menu-block .menu-items-wrapper li:nth-child(odd) a span {
+    @apply pr-9;
+  }
+
+  header .menu-block .menu-items-wrapper li a span {
+    transition: transform .575s cubic-bezier(.6, .01, .3, 1);
+  }
+
   header .menu-block .menu-items-wrapper li a i {
-    @apply inline-block absolute top-7 ml-5;
+    @apply inline-block absolute top-0 right-0;
     font-family: 'Grotesque', Arial, Helvetica, sans-serif;
     font-style: normal;
     font-weight: 500;

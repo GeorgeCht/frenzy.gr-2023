@@ -167,10 +167,14 @@ const Header = (props) => {
           <div className="menu-inner-container flex flex-col justify-between w-full z-[1000] px-14 pt-36 pb-12">
 
             <div className="menu-items-wrapper flex flex-col">
-              <ul>
+              <ul className="flex flex-col gap-1">
               {menuItems.map((item, itemIndex) => (
                 <li key={itemIndex}>
-                  <Link href={item.url} onClick={() => { toggleMenu(), props.onClick() }} className="text-9xl">{item.title}<i>0{itemIndex+1}</i></Link>
+                  <Link href={item.url} onClick={() => { toggleMenu(), props.onClick() }} className="text-9xl inline-flex flex-col relative overflow-hidden">
+                    <span className="inline-flex relative">{item.title}</span>
+                    <span className="inline-flex relative">{item.title}</span>
+                    <i>0{itemIndex+1}</i>
+                  </Link>
                 </li>
               ))}
               </ul>
@@ -190,7 +194,7 @@ const Header = (props) => {
             </div>
 
           </div>
-          <Blurs />
+          {/* <Blurs /> */}
           <div className="menu-inner-below inline-block w-screen h-[10vw] bg-[#E9E4E4] absolute bottom-[10vh] rounded-b-[50%] translate-y-0"></div>
         </div>
       </header>

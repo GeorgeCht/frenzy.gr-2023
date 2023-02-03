@@ -15,17 +15,17 @@ const Preloader = (props) => {
         gsap.to(`.preloader .vhs`, {
           width: '100vw',
           height: '2px',
-          duration: .215,
-          ease: 'Power2.easeOut'
+          duration: .745,
+          ease: 'power3.inOut'
         })
         gsap.to(`.preloader .vhs`, {
           width: '0',
-          delay: 0.265,
-          duration: .285,
-          ease: 'Power2.easeOut'
+          delay: .385,
+          duration: .375,
+          ease: 'power2.inOut'
         })
-        gsap.to(`.preloader`, { width: '0', height: '0', delay: 0.665, })
-      }, props.timer - 215)
+        gsap.to(`.preloader`, { width: '0', height: '0', delay: 0.965, })
+      }, props.timer - 715)
       
       // simulate loading
       const intervalId = setInterval(() => {

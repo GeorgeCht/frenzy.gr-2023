@@ -3,6 +3,7 @@ import { SwitchTransition, Transition } from 'react-transition-group';
 import gsap from 'gsap';
 
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 const Layout = ({ children }) => {
   const router = useRouter();
@@ -34,7 +35,11 @@ const Layout = ({ children }) => {
       duration: 1.015,
       ease: 'power4.inOut'
     })
-
+    gsap.to(`#__next > main`, {
+      opacity: 1,
+      duration: .925,
+      ease: 'circ.inOut',
+    })
   };
 
   const onPageExit = (node) => {
@@ -62,7 +67,20 @@ const Layout = ({ children }) => {
       duration: .625,
       ease: 'power4.inOut'
     })
+    gsap.to(`#__next > main`, {
+      opacity: 0,
+      duration: .925,
+      ease: 'circ.inOut',
+    })
   };
+
+  useEffect(() => {
+    gsap.to(`#__next > main`, {
+      opacity: 1,
+      duration: .925,
+      ease: 'circ.inOut',
+    })
+  })
 
   return (
     <>
@@ -80,7 +98,7 @@ const Layout = ({ children }) => {
           mountOnEnter={true}
           unmountOnExit={true}
         >
-          <main className="mx-auto z-10">{children}</main>
+          <main className="mx-auto opacity-0 z-10">{children}</main>
         </Transition>
       </SwitchTransition>
     </>
