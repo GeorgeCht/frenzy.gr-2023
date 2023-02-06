@@ -8,30 +8,18 @@ import Preloader from '../components/Preloader'
 import gsap from 'gsap'
 import { useRouter } from 'next/router'
 
-function MyApp({ Component, pageProps }) {
+function app({ Component, pageProps }) {
 
   // Preloader state
   const [isPreloading, setIsPreloading] = useState(true)
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const router = useRouter()
   const preloadTime = Math.floor(Math.random() * 2500) + 1000
-  
 
   useEffect(() => {
 
     setTimeout(() => {
       setIsPreloading(false)
     }, preloadTime)
-
-    const mouseMoveHandler = (event) => {
-      setMousePosition({
-        x: event.clientX,
-        y: event.clientY,
-      })
-    }
-
-    document.body.addEventListener(`mousemove`, mouseMoveHandler)
-    // show mousePosition.x
     
     // First time visitors redirected to /intro page
     const firstVisit = localStorage.getItem("firstVisit") || "true"
@@ -39,12 +27,6 @@ function MyApp({ Component, pageProps }) {
       localStorage.setItem("firstVisit", "false")
       router.push(`/page1`)
     }
-
-    // Setup ThreeJS
-    // const threeScript = document.createElement('script')
-    // threeScript.setAttribute('id', 'threeScript')
-    // threeScript.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js')
-    // document.getElementsByTagName("head")[0].appendChild(threeScript);
 
     // Init lenis scroll
     const lenis = new Lenis({
@@ -65,7 +47,7 @@ function MyApp({ Component, pageProps }) {
     requestAnimationFrame(raf)
 
     return () => {
-      document.body.removeEventListener(`mousemove`, mouseMoveHandler)
+      
     }
   }, [])
 
@@ -89,4 +71,4 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-export default MyApp;
+export default app;

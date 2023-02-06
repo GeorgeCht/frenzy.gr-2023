@@ -186,11 +186,11 @@ const Header = (props) => {
                   <a href={item.url} className="text-grotesque uppercase" key={itemIndex}>{item.title}</a>
                 ))}
               </div>
-              <p className="menu-footnotes text-grotesque flex">
+              <span className="menu-footnotes text-grotesque flex">
                 <p>full service 360 agency</p>
                 <p><a className='flex' href="tel:+304564465161">tel: +302105862900</a></p>
                 <p><a className='flex' href="tel:+304564465161">mail: info@frenzy.gr</a></p>
-              </p>
+              </span>
             </div>
 
           </div>
