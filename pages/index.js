@@ -19,17 +19,6 @@ export default function Home() {
         rerum, sed eum facilis dolorum a veniam cumque sit molestias quaerat
         nobis! Nulla veritatis ea eius!
       </p>
-      <Marquee 
-        rotate={0.5}
-        textColor="#FFF" 
-        backgroundColor="#0B0B0D" 
-        isOutbound={false}
-        textContent={[
-          { head: "Digital",  sub: "Discover what we do" },
-          { head: "Agency",   sub: "Learn more about us" },
-          { head: "2023",     sub: "Frenzy what we do" },
-        ]}
-      />
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
         voluptatem voluptas ipsa voluptatibus nihil totam a sequi vel tempore

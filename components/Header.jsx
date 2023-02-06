@@ -4,6 +4,8 @@ import Logo from '../components/Logo'
 import gsap from 'gsap'
 import Blurs from './Blurs';
 
+import FrenzyRadio from './FrenzyRadio'
+
 const Header = (props) => {
 
   const [menuIsOpen, setMenuIsOpen] = useState(true)
@@ -54,12 +56,14 @@ const Header = (props) => {
       // ...
       console.log(`Open menu animation here ..`),
       gsap.to(`.menu-block`, {
-        y: '44%',
+        y: '48%',
         duration: durationLong,
         ease: easing
       }),
       gsap.to(`.menu-block .menu-inner-above`, {
         y: '-120%',
+        borderTopLeftRadius: 0,
+        borderTopRightRadius: 0,
         duration: durationLong,
         delay: .125,
         ease: easing
@@ -90,7 +94,7 @@ const Header = (props) => {
       // Close menu animation
       // ...
       gsap.to(`.menu-block`, {
-        y: '144%',
+        y: '150%',
         delay: 0.275,
         duration: durationLong,
         ease: easing,
@@ -100,6 +104,8 @@ const Header = (props) => {
       }),
       gsap.to(`.menu-block .menu-inner-above`, {
         y: 0,
+        borderTopLeftRadius: `50%`,
+        borderTopRightRadius: `50%`,
         delay: 0.265,
         duration: durationLong- .05,
         ease: easing,
@@ -141,7 +147,7 @@ const Header = (props) => {
         <h4 className="text-white flex text-grotesque items-center text-center justify-center main-heading-2 uppercase">{props.pathName}</h4>
         <div className="transition-inner-below inline-block w-screen h-[10vw] bg-[#0B0B0D] absolute bottom-[10vh] rounded-b-[50%] translate-y-0"></div>
       </div>
-      <header className="flex justify-between mx-auto mb-8 px-16 py-12 fixed w-full items-center z-[9998] -translate-y-[80px] opacity-0">
+      <header className="flex justify-between mx-auto py-1 px-4 md:px-12 md:py-10 lg:px-16 lg:py-12 fixed w-full items-center z-[9998] -translate-y-[80px] opacity-0 ">
         <nav className="menu-item menu-toggle w-1/3 justify-start items-center z-[1000]" onClick={toggleMenu}>
           <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" className="cursor-pointer">
             <path d="M1 22H43" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -154,23 +160,23 @@ const Header = (props) => {
           <Logo width={99} height={12} fill={'#0B0B0D'}/>
         </Link>
         <div className="menu-item language-toggle flex w-1/3 justify-end z-[1000]">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" className="cursor-pointer">
+          {/* <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" className="cursor-pointer">
             <path d="M11 19.25C15.5563 19.25 19.25 15.5563 19.25 11C19.25 6.44365 15.5563 2.75 11 2.75C6.44365 2.75 2.75 6.44365 2.75 11C2.75 15.5563 6.44365 19.25 11 19.25Z" stroke="#0B0B0D" strokeMiterlimit="10"/>
             <path d="M3.22266 8.25H18.7773" stroke="#0B0B0D" strokeLinecap="round" strokeLinejoin="round"/>
             <path d="M3.22266 13.75H18.7773" stroke="#0B0B0D" strokeLinecap="round" strokeLinejoin="round"/>
             <path d="M11 19.0268C12.8985 19.0268 14.4375 15.4331 14.4375 11.0002C14.4375 6.56725 12.8985 2.97363 11 2.97363C9.10152 2.97363 7.5625 6.56725 7.5625 11.0002C7.5625 15.4331 9.10152 19.0268 11 19.0268Z" stroke="#0B0B0D" strokeMiterlimit="10"/>
           </svg>
-          <span className="text-grotesque uppercase pl-4 cursor-pointer">English</span>
+          <span className="text-grotesque uppercase pl-4 cursor-pointer">English</span> */}
         </div>
         <div className="menu-block flex w-screen h-screen absolute justify-center left-0 bg-[#E9E4E4] z-[999] -translate-y-full">
-          <div className="menu-inner-above inline-block w-screen h-[10vw] bg-[#E9E4E4] absolute top-[5vh] rounded-t-[50%] translate-y-0"></div>
-          <div className="menu-inner-container flex flex-col justify-between w-full z-[1000] px-14 pt-36 pb-12">
+          <div className="menu-inner-above inline-block w-screen h-[13vw] bg-[#E9E4E4] absolute top-[5vh] rounded-t-[50%] translate-y-0"></div>
+          <div className="menu-inner-container flex flex-col justify-between w-full z-[1000] px-2 pt-20 pb-4 md:px-8 md:pt-20 md:pb-20 lg:px-12 lg:pt-26 lg:pb-24">
 
             <div className="menu-items-wrapper flex flex-col">
               <ul className="flex flex-col gap-1">
               {menuItems.map((item, itemIndex) => (
                 <li key={itemIndex}>
-                  <Link href={item.url} onClick={() => { toggleMenu(), props.onClick() }} className="text-9xl inline-flex flex-col relative overflow-hidden">
+                  <Link href={item.url} onClick={() => { toggleMenu(), props.onClick() }} className="text-7xl lg:text-9xl inline-flex flex-col relative overflow-hidden">
                     <span className="inline-flex relative">{item.title}</span>
                     <span className="inline-flex relative">{item.title}</span>
                     <i>0{itemIndex+1}</i>
@@ -181,7 +187,7 @@ const Header = (props) => {
             </div>
 
             <div className="menu-footer-wrapper">
-              <div className="menu-social flex gap-5"> 
+              <div className="menu-social flex md:gap-5 flex-col md:flex-row"> 
                 {socialMediaItems.map((item, itemIndex) => (
                   <a href={item.url} className="text-grotesque uppercase" key={itemIndex}>{item.title}</a>
                 ))}
@@ -198,8 +204,11 @@ const Header = (props) => {
           <div className="menu-inner-below inline-block w-screen h-[10vw] bg-[#E9E4E4] absolute bottom-[10vh] rounded-b-[50%] translate-y-0"></div>
         </div>
       </header>
+      <FrenzyRadio url="https://sh.onweb.gr/8854/stream.mp3?ver=927123" />
+      
     </>
   )
 }
-
+//https://sh.onweb.gr/8854/stream.mp3?ver=927123
+//<FrenzyRadio url="https://uk3.internet-radio.com/proxy/majesticjukebox?mp=/live" />
 export default Header

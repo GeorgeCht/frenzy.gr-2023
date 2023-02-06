@@ -189,7 +189,7 @@ const VantaClouds = () => {
                 <span className="inline-flex relative">3</span>
               </div>
             </h2>
-            <h5 className="text-grotesque main-text-2 relative text-center uppercase max-w-[336px] m-auto mt-5">
+            <h5 className="text-grotesque main-text-2 relative text-center uppercase max-w-[336px] m-auto mt-5 hidden sm:block">
               HIGHLY FUNCTIONAL, UNIQUE & AWARD-WINNING DIGITAL PRODUCTS
             </h5>
           </div>

@@ -6,8 +6,13 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Grotesque', Arial, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, sans-serif;
+}
+
+html,
+body,
+main {
+  overflow-x: hidden;
 }
 
 a {
@@ -28,16 +33,17 @@ a {
 /* Header */
 /* =============================================== */
 /* =============================================== */
+
 #__next > header {
   z-index: 99;
 }
 
-#__next > header .menu-item {
+#__next > header .menu-item,
+.radio-container-block .text-grotesque {
   font-weight: 700;
   font-size: 12px;
   line-height: 1;
   display: flex;
-  align-items: center;
   letter-spacing: -0.02em;
 }
 
@@ -46,6 +52,53 @@ a {
   margin-top: 2px;
 }
 
+/* Radio container */
+/* =============================================== */
+/* =============================================== */
+
+@layer components {
+  .radio-container-block .radio-indicator {
+    @apply block w-[7px] h-[7px] rounded;
+    --indicator-color: rgba(11, 11, 13, 0.35);
+    background: var(--indicator-color);
+    transition: background .575s cubic-bezier(.6, .01, .3, 1);
+  }
+  .radio-container-block .radio-indicator.is-playing {
+    --indicator-color: #74F347;
+    animation-name: blinking;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  .radio-container-block .radio-indicator.is-buffering {
+    --indicator-color: #f3cb47;
+    animation-name: blinking;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  .radio-container-block .radio-indicator.has-error {
+    --indicator-color: #ED5A74;
+  }
+  .radio-container-block .radio-container-controller .text-grotesque {
+    max-height: 12px;
+  }
+  .radio-container-block .radio-container-controller .text-grotesque > span {
+    transition: transform .575s cubic-bezier(.6, .01, .3, 1);
+    transform: translateY(0);
+  }
+  .radio-container-block .radio-container-controller:hover .text-grotesque > span {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes blinking {
+  0% {opacity: .45 }
+  50% {opacity: 1 }
+  100% { opacity: .45 }
+}
+
+
 /* Mega menu */
 /* =============================================== */
 /* =============================================== */
@@ -53,7 +106,13 @@ a {
 @layer components {
 
   header .menu-block {
-    --letter-height: 110px;
+    --letter-height: 72px;
+  }
+
+  @media (min-width: 1024px) {
+    header .menu-block {
+      --letter-height: 111px;
+    }
   }
 
   header .menu-block .menu-items-wrapper li a {
@@ -76,7 +135,7 @@ a {
   }
 
   header .menu-block .menu-items-wrapper li:nth-child(even) a span {
-    @apply pr-16;
+    @apply pr-9 md:pr-16;
   }
 
   header .menu-block .menu-items-wrapper li:nth-child(odd) a {
@@ -95,12 +154,18 @@ a {
   }
 
   header .menu-block .menu-items-wrapper li a i {
-    @apply inline-block absolute top-0 right-0;
+    @apply hidden lg:inline-block absolute top-0 right-0;
     font-family: 'Grotesque', Arial, Helvetica, sans-serif;
     font-style: normal;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 14px;
     letter-spacing: -0.02em;
+  }
+
+  @media (min-width: 1024px) {
+    header .menu-block .menu-items-wrapper li a i {
+      font-size: 20px;
+    }
   }
 
   header .menu-block .menu-items-wrapper li:nth-child(even) a i {
@@ -108,8 +173,8 @@ a {
   }
 
   header .menu-block .menu-footer-wrapper .menu-social a {
+    @apply md:text-[20px] text-base pt-4 pb-3 md:pb-0;
     font-weight: 500;
-    font-size: 20px;
     line-height: .75;
     letter-spacing: -0.02em;
     border-bottom: 1px solid;
@@ -340,7 +405,92 @@ body::-webkit-scrollbar {
   z-index: 1;
 }
 
+/* Equalizer icon */
+/* =============================================== */
+/* =============================================== */
 
+.equalizer {
+  --equalizer-color: #000;
+  cursor: pointer;
+  position: absolute;
+  display: flex;
+  align-items: flex-end;
+  height: 1em;
+}
+.equalizer.dark {
+  --equalizer-color: #000;
+}
+.equalizer.light {
+  --equalizer-color: #FFF;
+}
+.equalizer > span:before, 
+.equalizer > span:after {
+  content: '';
+  background: var(--equalizer-color);
+  width: 2px;
+  display: inline-block;
+  margin: 0 1px;
+  -webkit-animation-direction: alternate-reverse;
+  animation-direction: alternate-reverse; 
+  transition: height .575s cubic-bezier(.6, .01, .3, 1);
+}
+.equalizer > span:first-child:before {
+  height: .8em;
+  animation-delay: 0s;
+  animation-duration: 0.325s;
+  animation-name: first-eq-bar-animation;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite; 
+}
+.equalizer > span:first-child:after {
+  height: .6em;
+  animation-delay: 0.1s;
+  animation-duration: 0.315s;
+  animation-name: second-eq-bar-animation;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite; 
+}
+.equalizer > span:last-child:before {
+  height: 1em; 
+  animation-delay: 0.1s;
+  animation-duration: 0.333s;
+  animation-name: third-eq-bar-animation;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite; 
+}
+.equalizer > span:last-child:after {
+  height: .8em;
+  animation-delay: 0s;
+  animation-duration: 0.375s;
+  animation-name: fourth-eq-bar-animation;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite; 
+}
+.equalizer:is(.is-paused, .is-muted) > span,
+.equalizer:is(.is-paused, .is-muted) > span:before,
+.equalizer:is(.is-paused, .is-muted) > span:after {
+  animation-name: none;
+}
+.equalizer:is(.is-paused, .is-muted) > span:before,
+.equalizer:is(.is-paused, .is-muted) > span:after {
+  height: .1em;
+}
+@keyframes first-eq-bar-animation {
+  0% { height: .7em; }
+  100% { height: .3em; } 
+}
+@keyframes second-eq-bar-animation {
+  0% { height: .6em; }
+  100% { height: .2em; } 
+}
+@keyframes third-eq-bar-animation {
+  0% { height: .9em; }
+  100% { height: .6em; } 
+}
+@keyframes fourth-eq-bar-animation {
+  0% { height: .8em; }
+  100% { height: .2em; } 
+}
 
 
 

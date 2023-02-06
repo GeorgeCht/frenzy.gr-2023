@@ -55,7 +55,10 @@ function app({ Component, pageProps }) {
     <>
       <Head>
         <title>Frenzy | 2023</title>
+        <meta charset="UTF-8"></meta>
         <meta property="og:title" content="My page title" key="title" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"></meta>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
       </Head>
       {isPreloading ? (
         <Preloader timer={preloadTime} />
