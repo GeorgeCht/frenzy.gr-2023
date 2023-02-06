@@ -199,7 +199,7 @@ const Header = (props) => {
         </div>
       </header>
     </>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
