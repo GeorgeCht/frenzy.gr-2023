@@ -13,13 +13,16 @@ import gsap from 'gsap'
 
 function app({ Component, pageProps }) {
 
+  // Router for page change transitions
+  const router = useRouter()
+
   // Preloader state
   const [isPreloading, setIsPreloading] = useState(true)
-  const router = useRouter()
   const preloadTime = Math.floor(Math.random() * 2500) + 1000
 
   useEffect(() => {
 
+    // Enables preloading
     setTimeout(() => {
       setIsPreloading(false)
     }, preloadTime)
@@ -31,10 +34,9 @@ function app({ Component, pageProps }) {
       router.push(`/page1`)
     }
 
-    const pageChanged = (url) => {
-      console.log(`-----------`)
-      console.log(`page change to ${url}`)
-      console.log(`-----------`)
+    // Page change transition
+    const pageChanged = () => {
+
       gsap.to(`.transition-block`, {
         y: 0,
         duration: .825,
@@ -56,11 +58,11 @@ function app({ Component, pageProps }) {
         duration: .925,
         ease: 'circ.inOut',
       })
+
     }
 
     router.events.on(`routeChangeStart`, pageChanged)
     
-
     // Init lenis scroll
     const lenis = new Lenis({
       duration: 1.2,

@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Blurs = () => {
 
@@ -15,7 +15,7 @@ const Blurs = () => {
     })
   }
   const blobs = useRef()
-  useLayoutEffect(() => {
+  useEffect(() => {
     let ctx = gsap.context(() => {
       gsap.to(`.blobs`, {
         y: (( mousePos.y ) / 42) + 1,
