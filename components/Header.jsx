@@ -15,7 +15,7 @@ const Header = (props) => {
   const menuItems = [
     { title: "Culture",  url: "/" },
     { title: "Work",   url: "/page1" },
-    { title: "Services",     url: "/page2" },
+    { title: "Services",     url: "/intro" },
     { title: "Contact",     url: "/page2" },
     { title: "Jobs",     url: "/page2" },
     { title: "Merch",     url: "/page2" },

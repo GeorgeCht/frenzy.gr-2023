@@ -31,7 +31,7 @@ function app({ Component, pageProps }) {
     const firstVisit = localStorage.getItem("firstVisit") || "true"
     if (firstVisit === "true") {
       localStorage.setItem("firstVisit", "false")
-      router.push(`/page1`)
+      router.push(`/intro`)
     }
 
     // Page change transition

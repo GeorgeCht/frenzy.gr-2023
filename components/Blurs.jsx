@@ -44,7 +44,7 @@ const Blurs = () => {
    */
 
   return (
-    <div className="blobs-container z-[999]" ref={ blobs } onMouseMove={ (e) => mouseMoveHandler(e) }>
+    <div className="blobs-container z-[9]" ref={ blobs } onMouseMove={ (e) => mouseMoveHandler(e) }>
       <div className="blobs" role="presentation">
 
         <div className="blob-rotate">

@@ -812,3 +812,37 @@ body::-webkit-scrollbar {
     margin: 3.333em 20px;
   }
 }
+
+
+
+
+
+
+
+
+
+/* Intro page */
+/* =============================================== */
+/* =============================================== */
+
+@layer components {
+  section.intro-page h4 {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  
+  section.intro-page p {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  
+  section.intro-page .enter-btn {
+    font-size: 52px;
+    letter-spacing: -0.01em;
+    color: #FD1D1D;
+  }
+}
