@@ -1,3 +1,6 @@
-# frenzy-2023
+# Frenzy®
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/nextjs-prdtmg)
+Latest build for [Frenzy®](https://frenzy.gr).
+Built with React / Tailwind in NextJS framwork.
+
+By GeorgeCht.
