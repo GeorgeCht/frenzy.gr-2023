@@ -1,12 +1,14 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { useRouter } from 'next/router'
 import Layout from '../components/Layout'
 import Lenis from '@studio-freight/lenis'
 import Head from 'next/head'
 import '../styles/globals.css'
 import '../styles/fonts.css'
+import DataProvider from '../context/DataProvider'
 import Preloader from '../components/Preloader'
 import gsap from 'gsap'
-import { useRouter } from 'next/router'
+
 
 function app({ Component, pageProps }) {
 
@@ -63,9 +65,11 @@ function app({ Component, pageProps }) {
       {isPreloading ? (
         <Preloader timer={preloadTime} />
       ) : (
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <DataProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </DataProvider>
       )}
       <div className="noise-container fixed z-[10000]">
         <div className="noise fixed z-[10000]"></div>

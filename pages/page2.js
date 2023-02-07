@@ -12,7 +12,7 @@ export default function Page2() {
         <h3 className="text-colton-xwide uppercase">
           frenzy 2023
         </h3>
-        <h3 className="text-colton-comp uppercase">
+        <h3 className="text-cinematic uppercase">
           frenzy projects
         </h3>
         <h3 className="text-timesnewroman">

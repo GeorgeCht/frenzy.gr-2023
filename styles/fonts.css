@@ -105,11 +105,15 @@
   font-style: normal;
 }
 
+/* SteelTongs */
+/* =============================================== */
+/* =============================================== */
+
 @font-face {
-  font-family: 'Colton Comp';
-  src: local('HDColton CompRegular'), local('HDColton-CompRegular'),
-      url('../public/fonts/hdcolton/hdcolton_comp.woff2') format('woff2'),
-      url('../public/fonts/hdcolton/hdcolton_comp.woff') format('woff');
+  font-family: 'Steeltongs';
+  src: local('Steeltongs'),
+      url('../public/fonts/steeltongs/steeltongs.woff2') format('woff2'),
+      url('../public/fonts/steeltongs/steeltongs.woff') format('woff');
   font-weight: 400;
   font-style: normal;
 }
@@ -123,8 +127,8 @@
   font-family: 'Colton XWide', Arial, Helvetica, sans-serif;
 }
 
-.text-colton-comp {
-  font-family: 'Colton Comp', Arial, Helvetica, sans-serif;
+.text-cinematic {
+  font-family: 'Steeltongs', Arial, Helvetica, sans-serif;
 }
 
 .text-timesnewroman {

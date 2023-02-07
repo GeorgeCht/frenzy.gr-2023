@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Misc */
+/* =============================================== */
+/* =============================================== */
+
 html,
 body {
   padding: 0;
@@ -30,6 +34,18 @@ a {
   box-sizing: border-box;
 }
 
+/* Colors */
+/* =============================================== */
+/* =============================================== */
+
+.bg-dark {
+  background-color: #0B0B0D;
+}
+
+.color-dark {
+  color: #0B0B0D;
+}
+
 /* Header */
 /* =============================================== */
 /* =============================================== */
@@ -50,6 +66,67 @@ a {
 #__next > header .menu-item > span {
   display: block;
   margin-top: 2px;
+}
+
+/* Footer */
+/* =============================================== */
+/* =============================================== */
+
+footer .block-established span {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 640px) {
+  footer .block-socials li:not(:last-child)::after {
+    content: '';
+    display: inline-block;
+    height: 14px;
+    width: 2px;
+    background-color: #000;
+  }
+}
+
+footer .block-socials a {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+footer .block-cinematic .text-cinematic {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: .95;
+  text-align: center;
+  letter-spacing: .005em;
+}
+
+footer .block-cinematic .text-cinematic i {
+  font-style: normal;
+  font-size: 17px;
+}
+
+footer .block-links a {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 640px) {
+  footer .block-links li:not(:last-child)::after {
+    content: '';
+    display: inline-block;
+    height: 11px;
+    width: 1px;
+    background-color: #000;
+  }
 }
 
 /* Radio container */
