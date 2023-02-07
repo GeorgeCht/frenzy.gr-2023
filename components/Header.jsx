@@ -156,7 +156,7 @@ const Header = (props) => {
           </svg>
           <span className="text-grotesque uppercase pl-4 cursor-pointer">Menu</span>
         </nav>
-        <Link onClick={props.onClick} href="/" className="flex w-1/3 justify-center z-[1000]">
+        <Link onClick={props.onClick("/")} href="/" className="flex w-1/3 justify-center z-[1000]">
           <Logo width={99} height={12} fill={'#0B0B0D'}/>
         </Link>
         <div className="menu-item language-toggle flex w-1/3 justify-end z-[1000]">
@@ -176,7 +176,7 @@ const Header = (props) => {
               <ul className="flex flex-col gap-1">
               {menuItems.map((item, itemIndex) => (
                 <li key={itemIndex}>
-                  <Link href={item.url} onClick={() => { toggleMenu(), props.onClick() }} className="text-7xl lg:text-9xl inline-flex flex-col relative overflow-hidden">
+                  <Link href={item.url} onClick={() => { toggleMenu(), props.onClick(item.url) }} className="text-7xl lg:text-9xl inline-flex flex-col relative overflow-hidden">
                     <span className="inline-flex relative">{item.title}</span>
                     <span className="inline-flex relative">{item.title}</span>
                     <i>0{itemIndex+1}</i>
