@@ -11,7 +11,7 @@ const Logo = (props) => {
         <path d="M88.6152 0.287109L83.0195 4.83789L77.4238 0.287109H74.7969L82.1309 6.25391V11H83.9277V6.25391L91.2422 0.287109H88.6152Z" fill={ props.fill }/>
       </svg>          
     </span>
-  );
-};
+  )
+}
 
-export default Logo;
+export default Logo

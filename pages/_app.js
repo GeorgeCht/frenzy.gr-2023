@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import Layout from '../components/Layout'
+import Noise from '../components/Noise'
 import Lenis from '@studio-freight/lenis'
 import Head from 'next/head'
 import '../styles/globals.css'
@@ -101,9 +102,7 @@ function app({ Component, pageProps }) {
           </Layout>
         </DataProvider>
       )}
-      <div className="noise-container fixed z-[10000]">
-        <div className="noise fixed z-[10000]"></div>
-      </div>
+      {/* <Noise /> */}
     </>
   );
 }
