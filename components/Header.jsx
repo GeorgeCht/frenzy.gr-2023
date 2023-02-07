@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import Logo from '../components/Logo'
 import gsap from 'gsap'
-import Blurs from './Blurs';
+import Blurs from './Blurs'
 
 import FrenzyRadio from './FrenzyRadio'
 
 const Header = (props) => {
+
+  const router = useRouter()
 
   const [menuIsOpen, setMenuIsOpen] = useState(true)
   const menuItems = [
@@ -127,6 +130,7 @@ const Header = (props) => {
   }
 
   useEffect(() => {
+    console.log(`from header: ${router.asPath}`)
     gsap.to(`#__next > header`, {
       y: 0,
       duration: 1.175,
@@ -148,6 +152,7 @@ const Header = (props) => {
         <div className="transition-inner-below inline-block w-screen h-[10vw] bg-[#0B0B0D] absolute bottom-[10vh] rounded-b-[50%] translate-y-0"></div>
       </div>
       <header className="flex justify-between mx-auto py-1 px-4 md:px-12 md:py-10 lg:px-16 lg:py-12 fixed w-full items-center z-[9998] -translate-y-[80px] opacity-0 ">
+
         <nav className="menu-item menu-toggle w-1/3 justify-start items-center z-[1000]" onClick={toggleMenu}>
           <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" className="cursor-pointer">
             <path d="M1 22H43" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -156,9 +161,19 @@ const Header = (props) => {
           </svg>
           <span className="text-grotesque uppercase pl-4 cursor-pointer">Menu</span>
         </nav>
-        <Link onClick={props.clickTrigger} href="/" className="flex w-1/3 justify-center z-[1000]">
-          <Logo width={99} height={12} fill={'#0B0B0D'}/>
-        </Link>
+
+        {router.pathname === "/" ? (
+          <a href="#" className={`flex w-1/3 justify-center z-1000`}>
+            <Logo width={99} height={12} fill={'#0B0B0D'} />
+          </a>
+        ) : (
+          <Link href="/" className={`flex w-1/3 justify-center z-1000`}>
+            <Logo width={99} height={12} fill={'#0B0B0D'} />
+          </Link>
+        )}
+
+        
+
         <div className="menu-item language-toggle flex w-1/3 justify-end z-[1000]">
           {/* <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" className="cursor-pointer">
             <path d="M11 19.25C15.5563 19.25 19.25 15.5563 19.25 11C19.25 6.44365 15.5563 2.75 11 2.75C6.44365 2.75 2.75 6.44365 2.75 11C2.75 15.5563 6.44365 19.25 11 19.25Z" stroke="#0B0B0D" strokeMiterlimit="10"/>
@@ -174,15 +189,28 @@ const Header = (props) => {
 
             <div className="menu-items-wrapper flex flex-col">
               <ul className="flex flex-col gap-1">
-              {menuItems.map((item, itemIndex) => (
-                <li key={itemIndex}>
-                  <Link href={item.url} onClick={() => { toggleMenu(), props.clickTrigger() }} className="text-7xl lg:text-9xl inline-flex flex-col relative overflow-hidden">
-                    <span className="inline-flex relative">{item.title}</span>
-                    <span className="inline-flex relative">{item.title}</span>
-                    <i>0{itemIndex+1}</i>
-                  </Link>
-                </li>
-              ))}
+
+                {menuItems.map((item, itemIndex) => (
+
+                  <li key={itemIndex}>
+
+                    {router.pathname === item.url ? (
+                      <a href="#" onClick={toggleMenu} className={`text-7xl lg:text-9xl inline-flex flex-col relative overflow-hidden`}>
+                        <span className="inline-flex relative">{item.title}</span>
+                        <span className="inline-flex relative">{item.title}</span>
+                        <i>0{itemIndex+1}</i>
+                      </a>
+                    ) : (
+                      <Link href={item.url} onClick={toggleMenu} className={`text-7xl lg:text-9xl inline-flex flex-col relative overflow-hidden`}>
+                        <span className="inline-flex relative">{item.title}</span>
+                        <span className="inline-flex relative">{item.title}</span>
+                        <i>0{itemIndex+1}</i>
+                      </Link>
+                    )}
+                    
+                  </li>
+                ))}
+
               </ul>
             </div>
 

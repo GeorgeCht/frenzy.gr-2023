@@ -39,7 +39,7 @@ const VantaClouds = () => {
           mouseControls: false,
           touchControls: false,
           gyroControls: true,
-          minHeight: 820.00,
+          minHeight: 940.00,
           minWidth: 200.00,
           skyColor: 0xe4e6e8,
           cloudColor: 0xb5bac8,
@@ -47,7 +47,7 @@ const VantaClouds = () => {
           sunColor: 0xaf9473,
           sunGlareColor: 0xb94055,
           sunlightColor: 0xd99b60,
-          speed: 0.60
+          speed: 0.875
         })
       )
     }

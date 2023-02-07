@@ -9,11 +9,9 @@ const Layout = ({ children }) => {
   const router = useRouter()
 
   const onPageEnter = (node) => {
-    // gsap.to(node, {
-    //   autoAlpha: 0,
-    //   duration: 1.025,
-    //   ease: 'power4.inOut'
-    // })
+    
+    console.log('==================')
+    console.log('CALLED: onPageEnter')
     gsap.to(`.transition-block`, {
       y: '100%',
       delay: 0.275,
@@ -43,6 +41,8 @@ const Layout = ({ children }) => {
   };
 
   const onPageExit = (node) => {
+    console.log('==================')
+    console.log('CALLED: onPageExit')
     // gsap.to(`.transition-block`, {
     //   y: 0,
     //   duration: 1.025,
@@ -50,29 +50,6 @@ const Layout = ({ children }) => {
     // })
   };
 
-  const onPageClick = (e) => {
-    gsap.to(`.transition-block`, {
-      y: 0,
-      duration: .825,
-      ease: 'power4.inOut'
-    })
-    gsap.to(`.transition-block .transition-inner-above`, {
-      y: '-120%',
-      duration: .825,
-      delay: .125,
-      ease: 'power4.inOut'
-    })
-    gsap.to(`.transition-block .transition-inner-below`, {
-      y: '120%',
-      duration: .625,
-      ease: 'power4.inOut'
-    })
-    gsap.to(`#__next > main`, {
-      opacity: 0,
-      duration: .925,
-      ease: 'circ.inOut',
-    })
-  };
 
   useEffect(() => {
     gsap.to(`#__next > main`, {
@@ -85,7 +62,6 @@ const Layout = ({ children }) => {
   return (
     <>
       <Header
-        clickTrigger={onPageClick}
         pathName={router.pathname}
       />
       <SwitchTransition>

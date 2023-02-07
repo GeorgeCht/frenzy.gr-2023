@@ -30,6 +30,36 @@ function app({ Component, pageProps }) {
       router.push(`/page1`)
     }
 
+    const pageChanged = (url) => {
+      console.log(`-----------`)
+      console.log(`page change to ${url}`)
+      console.log(`-----------`)
+      gsap.to(`.transition-block`, {
+        y: 0,
+        duration: .825,
+        ease: 'power4.inOut'
+      })
+      gsap.to(`.transition-block .transition-inner-above`, {
+        y: '-120%',
+        duration: .825,
+        delay: .125,
+        ease: 'power4.inOut'
+      })
+      gsap.to(`.transition-block .transition-inner-below`, {
+        y: '120%',
+        duration: .625,
+        ease: 'power4.inOut'
+      })
+      gsap.to(`#__next > main`, {
+        opacity: 0,
+        duration: .925,
+        ease: 'circ.inOut',
+      })
+    }
+
+    router.events.on(`routeChangeStart`, pageChanged)
+    
+
     // Init lenis scroll
     const lenis = new Lenis({
       duration: 1.2,
@@ -49,7 +79,7 @@ function app({ Component, pageProps }) {
     requestAnimationFrame(raf)
 
     return () => {
-      
+      router.events.off(`routeChangeStart`, pageChanged)
     }
   }, [])
 

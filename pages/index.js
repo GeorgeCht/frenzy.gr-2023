@@ -10,7 +10,6 @@ import Image from 'next/image'
 export default function Home() {
   
   const [data, setData] = useContext(DataContext)
-  console.log('data', data.socialMediaItems)
 
   return (
     <section className="flex flex-col w-full relative">
