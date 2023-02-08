@@ -1,17 +1,66 @@
-import Head from 'next/head'
-import Marquee from '../components/Marquee'
-import Logo from '../components/Logo'
-import PageFooter from '../components/PageFooter'
+
 import LinkInBrackets from '../components/LinkInBrackets'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { DataContext } from '../context/DataProvider'
 import Link from 'next/link'
-import Image from 'next/image'
 import Blurs from '../components/Blurs'
+import Segmentext from '../public/dist/segmentext.js'
+import gsap from 'gsap'
 
 export default function Intro() {
   
   const [data, setData] = useContext(DataContext)
+
+  const DOM_Items = { 
+    title:    '.intro-page h4', 
+    subtitle: '.intro-page p.color-dark', 
+    button:   '.intro-page a.enter-btn',
+  }
+  
+  useEffect(() => {
+
+    let easing = `expo.inOut`
+
+    for (const item in DOM_Items) {
+
+      // Item selectors
+      let selector = document.querySelector( DOM_Items[item] )
+  
+      // Split header menu
+      let segmentate = new Segmentext(selector)
+
+      gsap.set(segmentate.chars, { y: 10, opacity: 0 })
+  
+    }
+
+    setTimeout(() => {
+
+      gsap.to(DOM_Items.title+' .text-segment--char', {
+        opacity: 1,
+        y: 0,
+        ease: easing,
+        stagger: .025,
+      })
+  
+      gsap.to(DOM_Items.subtitle+' .text-segment--char', {
+        opacity: 1,
+        y: 0,
+        ease: easing,
+        stagger: .025,
+        delay: .465
+      })
+  
+      gsap.to(DOM_Items.button+' .text-segment--char', {
+        opacity: 1,
+        y: 0,
+        ease: easing,
+        stagger: .175,
+        delay: 1.725
+      })
+      
+    }, 100);
+
+  }, [])
 
   return (
     <>

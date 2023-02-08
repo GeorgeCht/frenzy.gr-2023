@@ -13,11 +13,11 @@ const Header = (props) => {
   const menuRef = useRef()
   const [menuIsOpen, setMenuIsOpen] = useState(true)
   const menuItems = [
-    { title: "Culture",  url: "/" },
-    { title: "Work",   url: "/page1" },
-    { title: "Services",     url: "/intro" },
-    { title: "Contact",     url: "/page2" },
-    { title: "Jobs",     url: "/page2" },
+    { title: "Culture",   url: "/home" },
+    { title: "Work",      url: "/work" },
+    { title: "Services",  url: "/intro" },
+    { title: "Contact",   url: "/page2" },
+    { title: "Jobs",      url: "/page2" },
     { title: "Merch",     url: "/page2" },
   ]
   const socialMediaItems = [
@@ -34,7 +34,6 @@ const Header = (props) => {
     // Change state
     setMenuIsOpen(!menuIsOpen)
 
-    let text, splittedText
     let easing = `expo.inOut`
     let origin = `50%`
     let duration = .875

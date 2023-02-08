@@ -27,12 +27,13 @@ function app({ Component, pageProps }) {
       setIsPreloading(false)
     }, preloadTime)
     
-    // First time visitors redirected to /intro page
-    const firstVisit = localStorage.getItem("firstVisit") || "true"
-    if (firstVisit === "true") {
-      localStorage.setItem("firstVisit", "false")
-      router.push(`/intro`)
-    }
+    // First time visitors redirected to /index page
+    // const firstVisit = localStorage.getItem("firstVisit") || "true"
+    // if (firstVisit === "false") {
+    //   router.push(`/`)
+    // } else {
+    //   localStorage.setItem("firstVisit", "true")
+    // }
 
     // Page change transition
     const pageChanged = () => {
