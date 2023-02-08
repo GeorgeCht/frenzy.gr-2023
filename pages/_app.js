@@ -97,7 +97,7 @@ function app({ Component, pageProps }) {
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"></meta>
         <meta httpEquiv="X-UA-Compatible" content="IE=edge"></meta>
       </Head>
-      {isPreloading ? (
+      {/* {isPreloading ? (
         <Preloader timer={preloadTime} />
       ) : (
         <DataProvider>
@@ -105,7 +105,12 @@ function app({ Component, pageProps }) {
             <Component {...pageProps} />
           </Layout>
         </DataProvider>
-      )}
+      )} */}
+      <DataProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </DataProvider>
       <Noise />
     </>
   );

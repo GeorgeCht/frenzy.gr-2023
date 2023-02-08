@@ -1,10 +1,12 @@
 // Player via https://github.com/CookPete/react-player
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import ReactPlayer from 'react-player/lazy'
 import gsap from 'gsap'
+import Delayed from './Delayed'
 
 const FrenzyRadio = (props) => {
 
+  const radioRef = useRef()
   const [isPlaying, setIsPlaying] = useState(false)
   const [radioHasError, setRadioHasError] = useState(false)
   const [radioIsBuffering, setRadioIsBuffering] = useState(false)
@@ -13,6 +15,11 @@ const FrenzyRadio = (props) => {
     minutes: 0,
     seconds: 0
   }])
+
+  useEffect(() => {
+
+  }, [radioRef])
+
 
   const handleTogglePlay = () => {
     setIsPlaying(!isPlaying)
@@ -45,6 +52,8 @@ const FrenzyRadio = (props) => {
   const toggleBuffering = () => {
     setRadioIsBuffering(!radioIsBuffering)
   }
+
+
 
   return (
     <>
@@ -80,21 +89,25 @@ const FrenzyRadio = (props) => {
           </div>
         </div>
       </section>
-      <ReactPlayer 
-        url={props.url}
-        width={0}
-        height={0}
-        controls={false} 
-        playing={isPlaying} 
-        playsinline={true}
-        volume={playerVolume}
-        onReady={() => { console.log(`player onReady`) }}
-        onError={() => { toggleRadioError() }}
-        onBuffer={toggleBuffering}
-        onBufferEnd={() => { console.log(`player onBufferEnd`) }}
-        onPause={() => { console.log(`player onPause`) }}
-        onProgress={(played, loaded) => updateTracking(played.playedSeconds) }
-      />
+      <Delayed waitBeforeShow={100}>
+        <ReactPlayer 
+          ref={radioRef}
+          url={props.url}
+          width={0}
+          height={0}
+          controls={false} 
+          playing={isPlaying} 
+          playsinline={true}
+          volume={playerVolume}
+          onReady={() => { console.log(`player onReady`) }}
+          onError={() => { toggleRadioError() }}
+          onBuffer={toggleBuffering}
+          onBufferEnd={() => { console.log(`player onBufferEnd`) }}
+          onPause={() => { console.log(`player onPause`) }}
+          onProgress={(played, loaded) => updateTracking(played.playedSeconds) }
+        />
+      </Delayed>
+      
     </>
   )
 
