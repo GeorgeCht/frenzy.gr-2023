@@ -17,6 +17,7 @@
     "react-dom": "^18.2.0",
     "react-player": "^2.11.0",
     "react-transition-group": "^4.4.5",
+    "segmentext-js": "^1.0.1",
     "three": "^0.149.0",
     "vanta": "^0.5.24"
   },

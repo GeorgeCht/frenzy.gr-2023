@@ -1,16 +1,16 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Logo from '../components/Logo'
 import gsap from 'gsap'
 import Blurs from './Blurs'
-
 import FrenzyRadio from './FrenzyRadio'
+import Segmentext from '../public/dist/segmentext.js'
 
 const Header = (props) => {
 
   const router = useRouter()
-
+  const menuRef = useRef()
   const [menuIsOpen, setMenuIsOpen] = useState(true)
   const menuItems = [
     { title: "Culture",  url: "/" },
@@ -29,9 +29,12 @@ const Header = (props) => {
 
   const toggleMenu = () => {
 
+    menuIsOpen && reconstructMenuTextSegments()
+
     // Change state
     setMenuIsOpen(!menuIsOpen)
 
+    let text, splittedText
     let easing = `expo.inOut`
     let origin = `50%`
     let duration = .875
@@ -56,8 +59,6 @@ const Header = (props) => {
       gsap.to(`header .menu-toggle svg`, { scale: 1.75, transformOrigin: origin, duration: duration, ease: easing }),
 
       // Open menu animation
-      // ...
-      console.log(`Open menu animation here ..`),
       gsap.to(`.menu-block`, {
         y: '48%',
         duration: durationLong,
@@ -75,6 +76,26 @@ const Header = (props) => {
         y: '120%',
         duration: durationLong - .2,
         ease: easing
+      }),
+      gsap.to(`.menu-items-wrapper li a .text-segment--char`, {
+        opacity: 1,
+        y: 0,
+        ease: easing,
+        stagger: .025,
+        delay: .385,
+      }),
+      gsap.to(`.menu-block .menu-footer-wrapper .menu-social a .text-segment--char`, {
+        opacity: 1,
+        y: 0,
+        ease: easing,
+        stagger: .025,
+        delay: 1.295,
+      }),
+      gsap.to(`.menu-block .menu-footer-wrapper .menu-footnotes p`, {
+        opacity: 1,
+        ease: easing,
+        stagger: .285,
+        delay: 1.895,
       }),
 
       // Remove body prevent clicks
@@ -95,7 +116,28 @@ const Header = (props) => {
       gsap.to(`header .menu-toggle svg`, { scale: 1, transformOrigin: origin, duration: duration, ease: easing }),
 
       // Close menu animation
-      // ...
+      
+      gsap.to(`.menu-block .menu-footer-wrapper .menu-social a .text-segment--char`, {
+        y: 20,
+        opacity: 0,
+        ease: easing,
+        stagger: .015,
+      }),
+      gsap.to(`.menu-block .menu-footer-wrapper .menu-footnotes p`, {
+        opacity: 0,
+        ease: easing,
+        stagger: .085,
+      }),
+      gsap.to(`.menu-items-wrapper li a .text-segment--char`, {
+        y: 110,
+        ease: 'back',
+        stagger: .005,
+      }),
+
+
+
+
+
       gsap.to(`.menu-block`, {
         y: '150%',
         delay: 0.275,
@@ -119,30 +161,95 @@ const Header = (props) => {
         duration: durationLong - .125,
         ease: easing,
       }),
-      console.log(`Close menu animation here ..`),
 
       // Remove body prevent clicks
       setTimeout(() => document.body.classList.remove(`pointer-events-none`), duration * 1000)
 
     )
 
+  }
 
+  const reconstructMenuTextSegments = () => {
+    const header__menuItems = { 
+      culture:  'header .menu-items-wrapper li:nth-child(1) a span', 
+      work:     'header .menu-items-wrapper li:nth-child(2) a span', 
+      services: 'header .menu-items-wrapper li:nth-child(3) a span',
+      contact:  'header .menu-items-wrapper li:nth-child(4) a span',
+      jobs:     'header .menu-items-wrapper li:nth-child(5) a span',
+      merch:    'header .menu-items-wrapper li:nth-child(6) a span'
+    }
+    const header__menuSocials = { 
+      i: 'header .menu-block .menu-footer-wrapper .menu-social a:nth-child(1)', 
+      f: 'header .menu-block .menu-footer-wrapper .menu-social a:nth-child(2)', 
+      b: 'header .menu-block .menu-footer-wrapper .menu-social a:nth-child(3)', 
+      l: 'header .menu-block .menu-footer-wrapper .menu-social a:nth-child(4)'
+    }
+    const header__menuFooterItems = { 
+      a: 'header .menu-block .menu-footer-wrapper .menu-footnotes p:nth-child(1)', 
+      b: 'header .menu-block .menu-footer-wrapper .menu-footnotes p:nth-child(2)', 
+      c: 'header .menu-block .menu-footer-wrapper .menu-footnotes p:nth-child(3)'
+    }
+    
+    for (const item in header__menuItems) {
+
+      // Item selectors
+      let selector = document.querySelector( header__menuItems[item] )
+
+      // Split header menu
+      let segmentate = new Segmentext(selector)
+
+      // Correct styles
+      gsap.set(segmentate.chars, { y: 100, opacity: 0 })
+
+    }
+
+    for (const item in header__menuSocials) {
+
+      // Item selectors
+      let selector = document.querySelector( header__menuSocials[item] )
+
+      // Split header menu
+      let segmentate = new Segmentext(selector)
+
+      // Correct styles
+      gsap.set(segmentate.chars, { y: 20, opacity: 0 })
+      gsap.set(header__menuSocials[item], { borderBottom: '0px solid' })
+
+    }
+
+    for (const item in header__menuFooterItems) {
+
+      // Item selectors
+      let selector = document.querySelector( header__menuFooterItems[item] )
+
+      // Correct styles
+      gsap.set(selector, { opacity: 0 })
+
+    }
   }
 
   useEffect(() => {
-    console.log(`from header: ${router.asPath}`)
+
+    // Intro header animation
     gsap.to(`#__next > header`, {
       y: 0,
-      duration: 1.175,
+      duration: .925,
       ease: 'Power4.easeInOut'
     })
     gsap.to(`#__next > header`, {
       opacity: 1,
-      duration: 1.175,
-      delay: .375,
+      duration: .765,
+      delay: .285,
       ease: 'Power3.easeInOut'
     })
+
   }, [])
+
+  useEffect(() => {
+
+    reconstructMenuTextSegments()
+
+  }, [menuRef])
   
   return (
     <>
@@ -151,7 +258,7 @@ const Header = (props) => {
         <h4 className="text-white flex text-grotesque items-center text-center justify-center main-heading-2 uppercase">{props.pathName}</h4>
         <div className="transition-inner-below inline-block w-screen h-[10vw] bg-[#0B0B0D] absolute bottom-[10vh] rounded-b-[50%] translate-y-0"></div>
       </div>
-      <header className="flex justify-between mx-auto py-1 px-4 md:px-12 md:py-10 lg:px-16 lg:py-12 fixed w-full items-center z-[9998] -translate-y-[80px] opacity-0 ">
+      <header ref={menuRef} className="flex justify-between mx-auto py-1 px-4 md:px-12 md:py-10 lg:px-16 lg:py-12 fixed w-full items-center z-[9998] -translate-y-[80px] opacity-0 ">
 
         <nav className="menu-item menu-toggle w-1/3 justify-start items-center z-[1000]" onClick={toggleMenu}>
           <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" className="cursor-pointer">
@@ -159,7 +266,9 @@ const Header = (props) => {
             <path d="M1 16H43" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             <path d="M1 28H43" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
-          <span className="text-grotesque uppercase pl-4 cursor-pointer">Menu</span>
+          <span className="text-grotesque uppercase pl-4 cursor-pointer">
+            Menu
+          </span>
         </nav>
 
         {router.pathname === "/" ? (
@@ -198,13 +307,13 @@ const Header = (props) => {
                       <a href="#" onClick={toggleMenu} className={`text-7xl lg:text-9xl inline-flex flex-col relative overflow-hidden`}>
                         <span className="inline-flex relative">{item.title}</span>
                         <span className="inline-flex relative">{item.title}</span>
-                        <i>0{itemIndex+1}</i>
+                        {/* <i>0{itemIndex+1}</i> */}
                       </a>
                     ) : (
                       <Link href={item.url} onClick={toggleMenu} className={`text-7xl lg:text-9xl inline-flex flex-col relative overflow-hidden`}>
                         <span className="inline-flex relative">{item.title}</span>
                         <span className="inline-flex relative">{item.title}</span>
-                        <i>0{itemIndex+1}</i>
+                        {/* <i>0{itemIndex+1}</i> */}
                       </Link>
                     )}
                     
@@ -221,14 +330,20 @@ const Header = (props) => {
                 ))}
               </div>
               <span className="menu-footnotes text-grotesque flex">
-                <p>full service 360 agency</p>
-                <p><a className='flex' href="tel:+304564465161">tel: +302105862900</a></p>
-                <p><a className='flex' href="tel:+304564465161">mail: info@frenzy.gr</a></p>
+                <p className="flex">full service 360 agency</p>
+                <p className="flex">tel: <a className='flex' href="tel:+304564465161">+302105862900</a></p>
+                <p className="flex">mail: <a className='flex' href="tel:+304564465161">info@frenzy.gr</a></p>
               </span>
             </div>
 
           </div>
-          <Blurs className="fixed z-[1000]" />
+          <Blurs 
+            className="fixed z-[1000]"
+            colorA={'#FCAF45'}
+            colorB={'#E82B64'}
+            colorC={'#FD1D1D'}
+            colorD={'#FFDC80'}
+          />
           <div className="menu-inner-below inline-block w-screen h-[10vw] bg-[#E9E4E4] absolute bottom-[10vh] rounded-b-[50%] translate-y-0"></div>
         </div>
       </header>

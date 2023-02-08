@@ -3,14 +3,23 @@ import Marquee from '../components/Marquee'
 import Logo from '../components/Logo'
 import PageFooter from '../components/PageFooter'
 import LinkInBrackets from '../components/LinkInBrackets'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { DataContext } from '../context/DataProvider'
 import Link from 'next/link'
 import Image from 'next/image'
+import gsap from 'gsap'
+import Segmentext from '../public/dist/segmentext.js'
+
+
 
 export default function Home() {
   
   const [data, setData] = useContext(DataContext)
+  
+  useEffect(() => {
+
+
+  }, [])
 
   return (
     <>

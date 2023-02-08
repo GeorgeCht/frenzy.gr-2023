@@ -82,6 +82,8 @@ const FrenzyRadio = (props) => {
       </section>
       <ReactPlayer 
         url={props.url}
+        width={0}
+        height={0}
         controls={false} 
         playing={isPlaying} 
         playsinline={true}
