@@ -4,11 +4,11 @@ const LinkInBrackets = (props) => {
   return (
     <>
       { props.isOutbound ? (
-        <a className='text-grotesque bracket-link uppercase' href={ props.url }>
+        <a className='bracket-link uppercase' href={ props.url }>
           <span className='inline-block'>{ props.innerText }</span>
         </a>
       ) : (
-        <Link className='text-grotesque bracket-link uppercase' href={ props.url }>
+        <Link className='bracket-link uppercase' href={ props.url }>
           <span className='inline-block'>{ props.innerText }</span>
         </Link>
       ) }

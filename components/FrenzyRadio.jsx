@@ -16,6 +16,23 @@ const FrenzyRadio = (props) => {
     seconds: 0
   }])
 
+  const introAnimate__Radio = () => {
+
+    // Intro radio bar animation
+    gsap.to(`section.radio-container-block`, {
+      y: 0,
+      duration: .925,
+      ease: 'circ.easeInOut'
+    })
+    gsap.to(`section.radio-container-block`, {
+      opacity: 1,
+      duration: .865,
+      delay: .385,
+      ease: 'circ.easeInOut'
+    })
+
+  }
+
   useEffect(() => {
 
   }, [radioRef])
@@ -57,7 +74,7 @@ const FrenzyRadio = (props) => {
 
   return (
     <>
-      <section className="radio-container-block flex justify-between bottom-0 mx-auto py-3 px-4 md:px-12 md:py-10 lg:px-16 lg:py-12 fixed w-full items-center z-[98]">
+      <section className="radio-container-block flex justify-between bottom-0 mx-auto py-3 px-4 md:px-12 md:py-10 lg:px-16 lg:py-12 fixed w-full items-center z-[98] translate-y-[40px] opacity-0">
         <div className="radio-container-item radio-container-controller" onClick={handleTogglePlay}>
           <div className="flex items-center cursor-pointer">
             <div className="pr-3">
@@ -99,7 +116,7 @@ const FrenzyRadio = (props) => {
           playing={isPlaying} 
           playsinline={true}
           volume={playerVolume}
-          onReady={() => { console.log(`player onReady`) }}
+          onReady={introAnimate__Radio}
           onError={() => { toggleRadioError() }}
           onBuffer={toggleBuffering}
           onBufferEnd={() => { console.log(`player onBufferEnd`) }}

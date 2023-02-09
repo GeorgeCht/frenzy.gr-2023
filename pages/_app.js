@@ -43,6 +43,13 @@ function app({ Component, pageProps }) {
         duration: .825,
         ease: 'power4.inOut'
       })
+      gsap.to(`.transition-block h4`, {
+        y: 0,
+        opacity: 1,
+        duration: .825,
+        delay: .125,
+        ease: 'circ.inOut'
+      })
       gsap.to(`.transition-block .transition-inner-above`, {
         y: '-120%',
         duration: .825,

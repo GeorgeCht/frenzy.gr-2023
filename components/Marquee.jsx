@@ -14,13 +14,12 @@ const Marquee = (props) => {
     gsap.to(marqueeRef.current, {
       scrollTrigger: {
         id: 1,
-        trigger: "#__next",
+        trigger: "#__next" || props.trigger,
         start: "top top",
         end: "bottom top",
         scrub: true,
       },
-      // yPercent: 50,
-      marginLeft: -450,
+      marginLeft: document.documentElement.offsetHeight / 3 || props.pageHeight / 3,
     })
     gsap.set(marqueeRef.current, {
       rotate: `${props.rotate}deg`
@@ -36,7 +35,7 @@ const Marquee = (props) => {
             {props.textContent.map((content, contentIndex) => (
               <div key={contentIndex} className="flex py-2">
                 <span>
-                  <h4 className="text-colton-xwide uppercase mx-6" style={{color: props.textColor}}>{content.head}</h4>
+                  <h4 className="text-colton-xwide w-max flex flex-row uppercase mx-6" style={{color: props.textColor}}>{content.head}</h4>
                 </span>
                 <span>
                   <div className="w-[136px] mx-6">

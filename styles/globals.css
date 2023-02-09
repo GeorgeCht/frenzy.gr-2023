@@ -72,6 +72,31 @@ a {
   margin-top: 2px;
 }
 
+#__next > header .menu-toggle > p {
+  max-height: 12px;
+}
+
+#__next > header .menu-toggle > p > span {
+  transition: transform .475s cubic-bezier(.6, .01, .3, 1);
+  transform: translateY(0);
+}
+
+#__next > header .menu-toggle:hover > p > span {
+  transform: translateY(-12px);
+}
+
+/* Transition block */
+/* =============================================== */
+/* =============================================== */
+
+.transition-block h4 {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: #F2F2F2;
+}
+
 /* Footer */
 /* =============================================== */
 /* =============================================== */
@@ -198,7 +223,7 @@ footer .block-links a {
 
   header .menu-block .menu-items-wrapper li a {
     @apply relative;
-    line-height: .9;
+    line-height: .875;
     max-height: calc( var(--letter-height) - 10px );
   }
   
@@ -206,7 +231,7 @@ footer .block-links a {
     transform: translateY( calc( -1 * var(--letter-height) - 6px  ) );
   }
   header .menu-block .menu-items-wrapper li a:hover span:nth-child(2) {
-    transform: translateY( calc( -1 * var(--letter-height) - 6px  ) );
+    transform: translateY( calc( -1 * var(--letter-height) + 7px  ) );
   }
 
   header .menu-block .menu-items-wrapper li:nth-child(even) a {
@@ -215,19 +240,11 @@ footer .block-links a {
     letter-spacing: -0.055em;
   }
 
-  header .menu-block .menu-items-wrapper li:nth-child(even) a > span {
-    @apply pr-9 md:pr-16;
-  }
-
   header .menu-block .menu-items-wrapper li:nth-child(odd) a {
     @apply uppercase cursor-pointer;
     font-family: 'Grotesque', Arial, Helvetica, sans-serif;
     font-weight: 400;
     letter-spacing: -0.04em;
-  }
-
-  header .menu-block .menu-items-wrapper li:nth-child(odd) a > span {
-    @apply pr-9;
   }
 
   header .menu-block .menu-items-wrapper li a span {
@@ -256,7 +273,7 @@ footer .block-links a {
   header .menu-block .menu-footer-wrapper .menu-social a {
     @apply md:text-[20px] text-base pt-4 pb-3 md:pb-0;
     font-weight: 500;
-    line-height: .75;
+    line-height: 1;
     letter-spacing: -0.02em;
   }
 
@@ -586,7 +603,9 @@ body::-webkit-scrollbar {
 
 
 
-
+/* Bracket links */
+/* =============================================== */
+/* =============================================== */
 
 .bracket-link {
   font-weight: 500;
@@ -594,6 +613,12 @@ body::-webkit-scrollbar {
   line-height: 1;
   text-align: center;
   letter-spacing: -0.02em;
+}
+
+@media (max-width: 640px) {
+  .bracket-link {
+    font-size: 16px;
+  }
 }
 
 .bracket-link > span {
@@ -608,6 +633,14 @@ body::-webkit-scrollbar {
 .bracket-link::after {
   content: '】';
   padding-left: 1.333em;
+}
+
+@media (max-width: 340px) {
+  .bracket-link::before,
+  .bracket-link::after {
+    content: '';
+    padding: 0;
+  }
 }
 
 
@@ -837,20 +870,33 @@ body::-webkit-scrollbar {
   section.intro-page h4 {
     font-weight: 700;
     font-size: 22px;
-    line-height: 1;
+    line-height: .9;
     letter-spacing: -0.02em;
   }
   
   section.intro-page p {
     font-weight: 500;
     font-size: 12px;
-    line-height: .95;
+    line-height: 1;
     letter-spacing: -0.02em;
   }
   
   section.intro-page .enter-btn {
+    @apply mt-12;
     font-size: 52px;
     letter-spacing: -0.01em;
+    line-height: .85;
     color: #FD1D1D;
+    max-height: 45px;
   }
+
+  section.intro-page .enter-btn > span {
+    transition: transform .475s cubic-bezier(.6, .01, .3, .6);
+    transform: translateY(0);
+  }
+
+  section.intro-page .enter-btn:hover > span {
+    transform: translateY(-45px);
+  }
+
 }

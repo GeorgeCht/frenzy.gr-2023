@@ -2,15 +2,20 @@ import Marquee from '../components/Marquee'
 import Logo from '../components/Logo'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { DataContext } from '../context/DataProvider'
 
 const PageFooter = () => {
 
   const [data, setData] = useContext(DataContext)
+  const [pageHeight, setPageHeight] = useState(0)
+
+  useEffect(() => {
+    setPageHeight(document.documentElement.offsetHeight)
+  }, [])
 
   return (
-    <footer className="flex flex-col items-center">
+    <footer className="footer flex flex-col items-center">
       
       <div className="block-established flex flex-row items-center gap-4">
 
@@ -43,15 +48,15 @@ const PageFooter = () => {
       </ul>
 
       <Marquee 
-        rotate={"-1"}
+        rotate={"-1.5"}
         rotateIncline={"right"}
         textColor={"#F2F2F2"} 
         backgroundColor={"#0B0B0D"} 
         isOutbound={false}
         textContent={[
-          { head: "Digital",  sub: "Discover what we do" },
-          { head: "Agency",   sub: "Learn more about us" },
-          { head: "2023",     sub: "Frenzy what we do" },
+          { head: "Contact us",  sub: "Discover what we do" },
+          { head: "Get in touch",   sub: "Learn more about us" },
+          { head: "Let's talk",     sub: "Frenzy what we do" },
         ]}
       />
 

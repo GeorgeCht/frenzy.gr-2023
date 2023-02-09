@@ -12,14 +12,22 @@ const Layout = ({ children }) => {
     
     console.log('==================')
     console.log('CALLED: onPageEnter')
+
     gsap.to(`.transition-block`, {
       y: '100%',
       delay: 0.275,
-      duration: 1.215,
-      ease: 'power4.inOut',
+      duration: .925,
+      ease: 'power3.inOut',
       onComplete: () => {
         gsap.set(`.transition-block`, { y: '-100%' })
       },
+    })
+    gsap.to(`.transition-block h4`, {
+      y: 40,
+      opacity: 0,
+      duration: .825,
+      delay: .125,
+      ease: 'circ.inOut'
     })
     gsap.to(`.transition-block .transition-inner-above`, {
       y: 0,
