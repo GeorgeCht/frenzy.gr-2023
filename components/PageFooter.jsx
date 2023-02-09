@@ -54,9 +54,9 @@ const PageFooter = () => {
         backgroundColor={"#0B0B0D"} 
         isOutbound={false}
         textContent={[
-          { head: "Contact us",  sub: "Discover what we do" },
-          { head: "Get in touch",   sub: "Learn more about us" },
-          { head: "Let's talk",     sub: "Frenzy what we do" },
+          { head: "Contact us",   sub: "Discover what we do" },
+          { head: "Get in touch", sub: "Learn more about us" },
+          { head: "Let's talk",   sub: "Frenzy what we do" },
         ]}
       />
 

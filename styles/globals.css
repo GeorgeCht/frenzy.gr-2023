@@ -81,6 +81,12 @@ a {
   transform: translateY(0);
 }
 
+@media (max-width: 640px) {
+  #__next > header .menu-toggle > p {
+    display: none;
+  }
+}
+
 #__next > header .menu-toggle:hover > p > span {
   transform: translateY(-12px);
 }
@@ -133,6 +139,19 @@ footer .block-cinematic .text-cinematic {
   letter-spacing: .005em;
 }
 
+@media (max-width: 640px) {
+  footer .block-cinematic .text-cinematic {
+    padding: 0 1.333rem
+  }
+  footer .block-cinematic .text-cinematic > br:not(:nth-child(2)) {
+    display: none;
+  }
+  footer .block-cinematic .text-cinematic > br:not(:nth-child(2))::after {
+    content: ' ';
+    display: block;
+  }
+}
+
 footer .block-cinematic .text-cinematic i {
   font-style: normal;
   font-size: 17px;
@@ -146,6 +165,20 @@ footer .block-links a {
   align-items: center;
   text-align: center;
   letter-spacing: -0.02em;
+}
+
+@media (max-width: 640px) {
+  footer .block-socials,
+  footer .block-links {
+    gap: .666rem;
+    padding-top: 3.333rem;
+    padding-bottom: 4rem;
+  }
+  footer .block-socials a,
+  footer .block-links a {
+    font-size: 16px;
+    font-weight: 700;
+  }
 }
 
 @media (min-width: 640px) {
@@ -334,7 +367,9 @@ body::-webkit-scrollbar {
   --blob-height-multi: .42;
   --blob-speed-scale: calc(0.75 * var(--blob-speed));
   --blob-speed-move: calc(1 * var(--blob-speed));
+  --side-blob-speed-move: calc(6.333 * var(--blob-speed));
   --blob-speed-rotate: calc(3.333 * var(--blob-speed));
+  --side-blob-speed-rotate: calc(1.333 * var(--blob-speed));
   --blob-opacity: 0.55;
   --blob-blur: 90px;
   position: absolute;
@@ -360,6 +395,12 @@ body::-webkit-scrollbar {
   mix-blend-mode: multiply;
   -webkit-animation: blob ease-in-out var(--blob-speed-scale) infinite;
           animation: blob ease-in-out var(--blob-speed-scale) infinite;
+}
+.side-blobs .blob {
+  width: calc( var(--blob-size) / 1.333 );
+  height: calc( var(--blob-height-multi) * 2 * var(--blob-size) );
+  -webkit-animation: blob ease-in-out calc(3.333 * var(--blob-speed)) infinite;
+          animation: blob ease-in-out calc(3.333 * var(--blob-speed)) infinite;
 }
 .blobs > :nth-child(2) .blob {
   background-color: var(--blob-color-2);
@@ -390,6 +431,10 @@ body::-webkit-scrollbar {
   -webkit-animation: blob-rotate linear var(--blob-speed-rotate) infinite alternate;
           animation: blob-rotate linear var(--blob-speed-rotate) infinite alternate;
 }
+.side-blobs .blob-rotate {
+  -webkit-animation: blob-rotate linear var(--side-blob-speed-rotate) infinite alternate;
+          animation: blob-rotate linear var(--side-blob-speed-rotate) infinite alternate;
+}
 .blob-rotate:nth-child(2) {
   -webkit-animation-duration: calc(2 * var(--blob-speed-rotate));
           animation-duration: calc(2 * var(--blob-speed-rotate));
@@ -412,6 +457,10 @@ body::-webkit-scrollbar {
   -webkit-animation: blob-move ease-in-out var(--blob-speed-move) infinite;
           animation: blob-move ease-in-out var(--blob-speed-move) infinite;
 }
+.side-blobs .blob-move {
+  -webkit-animation: side-blob-move ease-in-out var(--side-blob-speed-move) infinite;
+          animation: side-blob-move ease-in-out var(--side-blob-speed-move) infinite;
+}
 .blobs > :nth-child(2) .blob-move {
   -webkit-animation-delay: calc(-0.8 * var(--blob-speed-move));
           animation-delay: calc(-0.8 * var(--blob-speed-move));
@@ -424,6 +473,11 @@ body::-webkit-scrollbar {
 @keyframes blob-move {
   0%, 100% { transform: translateX(15%); }
   50% { transform: translateX(-15%); }
+}
+
+@keyframes side-blob-move {
+  0%, 100% { transform: translateX(5%); }
+  50% { transform: translateX(-5%); }
 }
 
 @media (max-width: 2560px) { .blobs { --blob-size: 42.175vw } }
@@ -643,7 +697,9 @@ body::-webkit-scrollbar {
   }
 }
 
-
+/* Main typography */
+/* =============================================== */
+/* =============================================== */
 
 .main-heading-1 {
   font-weight: 400;
@@ -651,6 +707,24 @@ body::-webkit-scrollbar {
   line-height: .9;
   text-align: center;
   letter-spacing: -0.01em;
+}
+
+@media (max-width: 1024px) {
+  .main-heading-1 {
+    font-size: 128px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-heading-1 {
+    font-size: 94px;
+  }
+}
+
+@media (max-width: 640px) {
+  .main-heading-1 {
+    font-size: 68px;
+  }
 }
 
 .main-heading-2 {
@@ -845,7 +919,7 @@ body::-webkit-scrollbar {
   100% { opacity: 0; }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .vhs-container .loader h2 {
     font-size: 33.333vw;
   }
