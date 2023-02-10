@@ -4,8 +4,10 @@ import Marquee from '../components/Marquee'
 import PageFooter from '../components/PageFooter'
 import Delayed from '../components/Delayed'
 import { register } from 'swiper/element/bundle'
+import { Parallax } from 'swiper'
 import Image from 'next/image'
 import { useEffect, useRef } from 'react'
+import LinkFlip from '../components/LinkFlip'
 
 // Register Swiper custom elements
 register();
@@ -41,28 +43,56 @@ export default function Page1() {
         />
       </section>
       <div className="block h-[100vh]"></div>
-      <section className="relative flex flex-col gap-8 items-center max-w-[1224px] h-screen mx-auto">
+
+      <section className="flex flex-col gap-8 items-center max-w-[1224px] mx-auto">
+        <LinkFlip url={'/about'} innerText={'Linkflip'} >
+          Linkflip
+        </LinkFlip>
+        <LinkFlip url={'/about'} innerText={'Headerg 1'} className="main-heading-1" >
+          <h1>Headerg 1</h1>
+        </LinkFlip>
+      </section>
+      <section className="flex flex-col gap-8 items-center max-w-[1224px] mx-auto">
+        <LinkFlip url={'/about'} innerText={'Linkflip'} >
+          Linkflip
+        </LinkFlip>
+        <LinkFlip url={'/about'} innerText={'Headerg 1'} className="main-heading-1" >
+          <h1>Headerg 1</h1>
+        </LinkFlip>
+      </section>
+      <section className="flex flex-col gap-8 items-center max-w-[1224px] mx-auto">
+        <LinkFlip url={'/about'} innerText={'Linkflip'} >
+          Linkflip
+        </LinkFlip>
+        <LinkFlip url={'/about'} innerText={'Headerg 1'} className="main-heading-1" >
+          <h1>Headerg 1</h1>
+        </LinkFlip>
+      </section>
+
+      <section className="swiper-gallery relative flex flex-col gap-8 items-center max-w-[1224px] h-screen mx-auto">
         
-        <Delayed waitBeforeShow={2500}>
+        <Delayed waitBeforeShow={100}>
           <swiper-container 
             swiperRef={swiperRef}
-            slidesPerView={"4"} 
+            slidesPerView={3} 
+            spaceBetween={10}
             direction={"horizontal"}
-            speed={"500"} 
-            navigation={"true"}
-            pagination={"true"}
-            className="w-100 max-w-lg"
+            speed={785} 
+            navigation={false}
+            pagination={false}
+            parallax={true}
+            modules={[Parallax]}
           >
-            <swiper-slide>
-              <Image src="/assets/timeline-img-01.webp" width={370} height={250} alt="alt" />
+            <swiper-slide data-swiper-parallax="100">
+              <Image src="/assets/timeline-img-01.webp" width={370} height={250} alt="alt" data-swiper-parallax="-100" />
             </swiper-slide>
-            <swiper-slide>
-              <Image src="/assets/timeline-img-02.webp" width={370} height={250} alt="alt" />
+            <swiper-slide data-swiper-parallax="-200">
+              <Image src="/assets/timeline-img-02.webp" width={370} height={250} alt="alt" data-swiper-parallax="-200" />
             </swiper-slide>
-            <swiper-slide>
+            <swiper-slide data-swiper-parallax="300">
               <Image src="/assets/timeline-img-03.webp" width={370} height={250} alt="alt" />
             </swiper-slide>
-            <swiper-slide>
+            <swiper-slide data-swiper-parallax="-500">
               <Image src="/assets/timeline-img-04.webp" width={370} height={250} alt="alt" />
             </swiper-slide>
             <swiper-slide>
@@ -70,6 +100,8 @@ export default function Page1() {
             </swiper-slide>
           </swiper-container>
         </Delayed>
+
+
         
       </section>
       <section className="relative flex flex-col gap-8 items-center max-w-[1224px] h-screen mx-auto">

@@ -51,13 +51,13 @@ function app({ Component, pageProps }) {
         ease: 'circ.inOut'
       })
       gsap.to(`.transition-block .transition-inner-above`, {
-        y: '-120%',
+        height: '20%',
         duration: .825,
         delay: .125,
         ease: 'power4.inOut'
       })
       gsap.to(`.transition-block .transition-inner-below`, {
-        y: '120%',
+        height: '20%',
         duration: .625,
         ease: 'power4.inOut'
       })

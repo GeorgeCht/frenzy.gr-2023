@@ -30,13 +30,13 @@ const Layout = ({ children }) => {
       ease: 'circ.inOut'
     })
     gsap.to(`.transition-block .transition-inner-above`, {
-      y: 0,
+      height: 0,
       delay: 0.265,
       duration: 1.275,
       ease: 'power4.inOut'
     })
     gsap.to(`.transition-block .transition-inner-below`, {
-      y: 0,
+      height: 0,
       delay: 0.275,
       duration: 1.015,
       ease: 'power4.inOut'

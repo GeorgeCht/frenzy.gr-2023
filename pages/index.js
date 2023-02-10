@@ -6,6 +6,7 @@ import Link from 'next/link'
 import Blurs from '../components/Blurs'
 import Segmentext from '../public/dist/segmentext.js'
 import gsap from 'gsap'
+import LinkFlip from '../components/LinkFlip'
 
 export default function Intro() {
   
@@ -85,13 +86,14 @@ export default function Intro() {
         <div></div>
 
         <div className="flex flex-col items-center justify-center">
+          
           <h4 className="uppercase text-center color-dark max-w-[430px] pb-2 z-[10]">Welcome to the frenzy experience. max your Volume and hit enter!</h4>
           <p className="uppercase text-center color-dark max-w-[330px] z-[10]">HIGHLY FUNCTIONAL, UNIQUE & AWARD-WINNING DIGITAL PRODUCTS IN THE MOST UNCOMPLICATED WAY POSSIBLE. WE BELIEVE THAT THE POWER.</p>
 
-          <Link href="/home" className="enter-btn uppercase text-colton-xwide z-[10] inline-flex flex-col relative overflow-hidden">
-            <span className="inline-flex relative">Enter</span>
-            <span className="inline-flex relative">Enter</span>
-          </Link>
+          <LinkFlip url={'/home'} innerText={'Enter'} className={'enter-btn uppercase text-colton-xwide z-[10] inline-flex flex-col'} >
+            Enter
+          </LinkFlip>
+
         </div>
 
         <div className="flex flex-col items-center justify-center h-[44px] mb-12 sm:mb-0 z-[98]">

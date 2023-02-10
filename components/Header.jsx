@@ -6,6 +6,7 @@ import gsap from 'gsap'
 import Blurs from './Blurs'
 import FrenzyRadio from './FrenzyRadio'
 import Segmentext from '../public/dist/segmentext.js'
+import LinkFlip from './LinkFlip'
 
 const Header = (props) => {
 
@@ -26,6 +27,10 @@ const Header = (props) => {
     { title: "Behance",    url: "#" },
     { title: "Linked in",  url: "#" },
   ]
+  const menuStateText = {
+    isOpen: `Menu`,
+    isClosed: `Close`
+  }
 
   const transitionBlock__Title = (url) => {
 
@@ -52,10 +57,6 @@ const Header = (props) => {
     let origin = `50%`
     let duration = .875
     let durationLong = 1.675
-    let menuStateText = {
-      isOpen: `Menu`,
-      isClosed: `Close`
-    }
     
     menuIsOpen ? (
 
@@ -63,7 +64,7 @@ const Header = (props) => {
       document.body.classList.add(`pointer-events-none`),
 
       // Change text content
-      document.querySelector(`header .menu-toggle p span`).textContent = menuStateText.isClosed,
+      // document.querySelector(`header .menu-toggle p span`).textContent = menuStateText.isClosed,
 
       // Menu icon toggle
       gsap.to(`header .menu-toggle svg path[d="M1 16H43"]`, { rotate: `+=38deg`, y: 6, transformOrigin: origin, duration: duration, ease: easing }),
@@ -267,9 +268,17 @@ const Header = (props) => {
   return (
     <>
       <div className="transition-block pointer-events-none flex w-screen h-screen fixed justify-center bg-[#0B0B0D] z-[9999] -translate-y-full">
-        <div className="transition-inner-above inline-block w-screen h-[10vw] bg-[#0B0B0D] absolute top-[5vh] rounded-t-[50%] translate-y-0"></div>
-        <h4 className="flex items-center text-center justify-center uppercase">{transitionBlock__Title(props.pathName)}</h4>
-        <div className="transition-inner-below inline-block w-screen h-[10vw] bg-[#0B0B0D] absolute bottom-[10vh] rounded-b-[50%] translate-y-0"></div>
+
+        <div className="transition-inner-above">
+          <div className="transition-rounded-block bg-[#0B0B0D]"></div>
+        </div>
+        <h4 className="flex items-center text-center justify-center uppercase">
+          {transitionBlock__Title(props.pathName)}
+        </h4>
+        <div className="transition-inner-below">
+          <div className="transition-rounded-block bg-[#0B0B0D]"></div>
+        </div>
+        
       </div>
       <header ref={menuRef} className="flex justify-between mx-auto py-1 px-4 md:px-12 md:py-10 lg:px-16 lg:py-12 fixed w-full items-center z-[9998] -translate-y-[80px] opacity-0">
 
@@ -279,9 +288,8 @@ const Header = (props) => {
             <path d="M1 16H43" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             <path d="M1 28H43" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
-          <p className="text-grotesque uppercase pl-4 cursor-pointer inline-flex flex-col relative overflow-hidden">
-            <span className="inline-flex relative">Menu</span>
-            <span className="inline-flex relative">Menu</span>
+          <p className="linkflip uppercase pl-4 cursor-pointer inline-flex flex-col relative overflow-hidden">
+            <span datatext={ menuIsOpen ? menuStateText.isOpen : menuStateText.isClosed }>{ menuIsOpen ? menuStateText.isOpen : menuStateText.isClosed }</span>
           </p>
         </nav>
 
@@ -290,7 +298,7 @@ const Header = (props) => {
             <Logo width={99} height={12} fill={'#0B0B0D'} />
           </a>
         ) : (
-          <Link href="/" className={`flex w-1/3 justify-center z-1000`}>
+          <Link href="/" className={`flex w-1/3 justify-center z-1000`} scroll={false}>
             <Logo width={99} height={12} fill={'#0B0B0D'} />
           </Link>
         )}
@@ -314,23 +322,16 @@ const Header = (props) => {
               <ul className="flex flex-col gap-1">
 
                 {menuItems.map((item, itemIndex) => (
-
                   <li className="overflow-hidden" key={itemIndex}>
-
                     {router.pathname === item.url ? (
-                      <a href="#" onClick={toggleMenu} className={`text-7xl lg:text-9xl inline-flex flex-col relative overflow-hidden`}>
-                        <span className="inline-flex relative">{item.title+` `}</span>
-                        <span className="inline-flex relative">{item.title+` `}</span>
-                        {/* <i>0{itemIndex+1}</i> */}
-                      </a>
+                      <LinkFlip url={'#'} isOutbound={true} innerText={item.title} onClick={toggleMenu} className={"text-7xl lg:text-9xl inline-flex flex-col"}>
+                        {item.title}
+                      </LinkFlip>
                     ) : (
-                      <Link href={item.url} onClick={toggleMenu} className={`text-7xl lg:text-9xl inline-flex flex-col relative overflow-hidden`}>
-                        <span className="inline-flex relative">{item.title+` `}</span>
-                        <span className="inline-flex relative">{item.title+` `}</span>
-                        {/* <i>0{itemIndex+1}</i> */}
-                      </Link>
+                      <LinkFlip url={item.url} innerText={item.title} scroll={false} onClick={toggleMenu} className={"text-7xl lg:text-9xl inline-flex flex-col"}>
+                        {item.title}
+                      </LinkFlip>
                     )}
-                    
                   </li>
                 ))}
 
