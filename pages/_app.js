@@ -51,14 +51,14 @@ function app({ Component, pageProps }) {
         ease: 'circ.inOut'
       })
       gsap.to(`.transition-block .transition-inner-above`, {
-        height: '20%',
-        duration: .825,
+        height: window.innerWidth >= 1024 ? '13.333vh' : '5vh',
+        duration: 1.225,
         delay: .125,
         ease: 'power4.inOut'
       })
       gsap.to(`.transition-block .transition-inner-below`, {
-        height: '20%',
-        duration: .625,
+        height: window.innerWidth >= 1024 ? '13.333vh' : '5vh',
+        duration: .825,
         ease: 'power4.inOut'
       })
       gsap.to(`#__next > main`, {
