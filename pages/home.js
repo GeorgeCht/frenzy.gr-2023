@@ -16,6 +16,14 @@ export default function Page1() {
 
   const swiperRef = useRef(null)
 
+  const swiperGallery__mouseDown = () => {
+    console.log(`mousedown`)
+  }
+
+  useEffect(() => {
+
+  }, [])
+
   return (
     <>
       <section className="blurs-intro">
@@ -69,40 +77,71 @@ export default function Page1() {
         </LinkFlip>
       </section>
 
-      <section className="swiper-gallery relative flex flex-col gap-8 items-center max-w-[1224px] h-screen mx-auto">
-        
+      <section className="swiper-gallery relative flex flex-col gap-8 items-center max-w-[100vw] h-screen mx-auto">
+
         <Delayed waitBeforeShow={100}>
           <swiper-container 
+            className="z-10"
             swiperRef={swiperRef}
-            slidesPerView={3} 
-            spaceBetween={10}
+            cssMode={true}
+            slides-per-view={3} 
+            space-between={92}
             direction={"horizontal"}
-            speed={785} 
+            speed={1185} 
             navigation={false}
             pagination={false}
+            loop={false}
             parallax={true}
             modules={[Parallax]}
           >
-            <swiper-slide data-swiper-parallax="100">
-              <Image src="/assets/timeline-img-01.webp" width={370} height={250} alt="alt" data-swiper-parallax="-100" />
-            </swiper-slide>
-            <swiper-slide data-swiper-parallax="-200">
-              <Image src="/assets/timeline-img-02.webp" width={370} height={250} alt="alt" data-swiper-parallax="-200" />
-            </swiper-slide>
-            <swiper-slide data-swiper-parallax="300">
-              <Image src="/assets/timeline-img-03.webp" width={370} height={250} alt="alt" />
-            </swiper-slide>
-            <swiper-slide data-swiper-parallax="-500">
-              <Image src="/assets/timeline-img-04.webp" width={370} height={250} alt="alt" />
+            <swiper-slide>
+              <div className="inline-flex justify-center items-center mx-auto relative overflow-hidden w-[600px] h-[794px]">
+                <Image className="absolute" src="/assets/dummy_img_swiper_01.webp" width={810} height={1072} alt="alt" data-swiper-parallax-scale="1.1" data-swiper-parallax="100" />
+              </div>
             </swiper-slide>
             <swiper-slide>
-              <Image src="/assets/timeline-img-05.webp" width={370} height={250} alt="alt" />
+              <div className="inline-flex justify-center items-center mx-auto relative overflow-hidden w-[600px] h-[794px]">
+                <Image className="absolute" src="/assets/dummy_img_swiper_02.webp" width={810} height={1072} alt="alt" data-swiper-parallax-scale="1.1" data-swiper-parallax="100" />
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div className="inline-flex justify-center items-center mx-auto relative overflow-hidden w-[600px] h-[794px]">
+                <Image className="absolute" src="/assets/dummy_img_swiper_03.webp" width={810} height={1072} alt="alt" data-swiper-parallax-scale="1.1" data-swiper-parallax="100" />
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div className="inline-flex justify-center items-center mx-auto relative overflow-hidden w-[600px] h-[794px]">
+                <Image className="absolute" src="/assets/dummy_img_swiper_02.webp" width={810} height={1072} alt="alt" data-swiper-parallax-scale="1.1" data-swiper-parallax="100" />
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div className="inline-flex justify-center items-center mx-auto relative overflow-hidden w-[600px] h-[794px]">
+                <Image className="absolute" src="/assets/dummy_img_swiper_01.webp" width={810} height={1072} alt="alt" data-swiper-parallax-scale="1.1" data-swiper-parallax="100" />
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div className="inline-flex justify-center items-center mx-auto relative overflow-hidden w-[600px] h-[794px]">
+                <Image className="absolute" src="/assets/dummy_img_swiper_02.webp" width={810} height={1072} alt="alt" data-swiper-parallax-scale="1.1" data-swiper-parallax="100" />
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div className="inline-flex justify-center items-center mx-auto relative overflow-hidden w-[600px] h-[794px]">
+                <Image className="absolute" src="/assets/dummy_img_swiper_03.webp" width={810} height={1072} alt="alt" data-swiper-parallax-scale="1.1" data-swiper-parallax="100" />
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div className="inline-flex justify-center items-center mx-auto relative overflow-hidden w-[600px] h-[794px]">
+                <Image className="absolute" src="/assets/dummy_img_swiper_02.webp" width={810} height={1072} alt="alt" data-swiper-parallax-scale="1.1" data-swiper-parallax="100" />
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div className="inline-flex justify-center items-center mx-auto relative overflow-hidden w-[600px] h-[794px]">
+                <Image className="absolute" src="/assets/dummy_img_swiper_01.webp" width={810} height={1072} alt="alt" data-swiper-parallax-scale="1.1" data-swiper-parallax="100" />
+              </div>
             </swiper-slide>
           </swiper-container>
         </Delayed>
 
-
-        
       </section>
       <section className="relative flex flex-col gap-8 items-center max-w-[1224px] h-screen mx-auto">
         <SideBlurs

@@ -278,7 +278,7 @@ const Header = (props) => {
         <div className="transition-inner-below">
           <div className="transition-rounded-block bg-[#0B0B0D]"></div>
         </div>
-        
+
       </div>
       <header ref={menuRef} className="flex justify-between mx-auto py-1 px-4 md:px-12 md:py-10 lg:px-16 lg:py-12 fixed w-full items-center z-[9998] -translate-y-[80px] opacity-0">
 
@@ -294,12 +294,14 @@ const Header = (props) => {
         </nav>
 
         {router.pathname === "/" ? (
-          <a href="#" className={`flex w-1/3 justify-center z-1000`}>
-            <Logo width={99} height={12} fill={'#0B0B0D'} />
+          <a href="#" className={`logo-wrapper w-1/3 justify-center z-1000 relative inline-flex flex-col items-center overflow-hidden h-auto cursor-pointer`}>
+            <Logo width={134} height={15} fill={'#0B0B0D'} />
+            <Logo width={134} height={15} fill={'#0B0B0D'} />
           </a>
         ) : (
-          <Link href="/" className={`flex w-1/3 justify-center z-1000`} scroll={false}>
-            <Logo width={99} height={12} fill={'#0B0B0D'} />
+          <Link href="/" className={`logo-wrapper w-1/3 justify-center z-1000 relative inline-flex flex-col items-center overflow-hidden h-auto cursor-pointer`} scroll={false}>
+            <Logo width={134} height={15} fill={'#0B0B0D'} />
+            <Logo width={134} height={15} fill={'#0B0B0D'} />
           </Link>
         )}
 
