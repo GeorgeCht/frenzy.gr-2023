@@ -6,7 +6,7 @@ import Delayed from '../components/Delayed'
 import { register } from 'swiper/element/bundle'
 import { Parallax } from 'swiper'
 import Image from 'next/image'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import LinkFlip from '../components/LinkFlip'
 
 // Register Swiper custom elements
@@ -15,12 +15,37 @@ register();
 export default function Page1() {
 
   const swiperRef = useRef(null)
-
-  const swiperGallery__mouseDown = () => {
-    console.log(`mousedown`)
-  }
+  const [dimensions, setDimensions] = useState({
+    width: 0,
+    height: 0
+  })
 
   useEffect(() => {
+
+    // Enable on resize events for swiper
+    if (typeof window !== 'undefined') {
+
+      setDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      })
+
+      const handleResize = () => {
+        setDimensions({
+          width: window.innerWidth,
+          height: window.innerHeight,
+        })
+      }
+
+      window.addEventListener('load', handleResize, false)
+      window.addEventListener('resize', handleResize, false)
+
+    }
+  
+    return () => {
+      window.removeEventListener('load', handleResize, false)
+      window.removeEventListener('resize', handleResize, false)
+    }
 
   }, [])
 
@@ -81,12 +106,12 @@ export default function Page1() {
 
         <Delayed waitBeforeShow={100}>
           <swiper-container 
-            className="z-10"
+            className='z-10'
             swiperRef={swiperRef}
             cssMode={true}
-            slides-per-view={3} 
-            space-between={92}
-            direction={"horizontal"}
+            slides-per-view={dimensions.width <= 768 ? 1 : (dimensions.width <= 1290 ? 2 : (dimensions.width <= 1920 ? 3 : 4))} 
+            space-between={dimensions.width <= 768 ? 40 : (dimensions.width <= 1290 ? 80 : 92)}
+            direction={'horizontal'}
             speed={1185} 
             navigation={false}
             pagination={false}
@@ -95,48 +120,51 @@ export default function Page1() {
             modules={[Parallax]}
           >
             <swiper-slide>
-              <div className="inline-flex justify-center items-center mx-auto relative overflow-hidden w-[600px] h-[794px]">
-                <Image className="absolute" src="/assets/dummy_img_swiper_01.webp" width={810} height={1072} alt="alt" data-swiper-parallax-scale="1.1" data-swiper-parallax="100" />
+              <div className="inline-flex justify-center items-center mx-auto relative overflow-hidden w-[100%] h-[100vh] md:h-[794px]">
+                <Image className="absolute" src="/assets/dummy_img_swiper_01.webp" style={{objectFit: 'cover'}} width={810} height={1072} alt="alt" data-swiper-parallax-scale="1.1" data-swiper-parallax="100" />
+                <div className="text-arc is-rotating flex relative mix-blend-difference transform-gpu w-[176px] h-[176px]">
+                  <Image className="absolute" src="/assets/text-arc-explore.svg" width={168} height={168} alt="explore" data-swiper-parallax="180" data-swiper-parallax-scale="1.075" />
+                </div>
               </div>
             </swiper-slide>
             <swiper-slide>
-              <div className="inline-flex justify-center items-center mx-auto relative overflow-hidden w-[600px] h-[794px]">
-                <Image className="absolute" src="/assets/dummy_img_swiper_02.webp" width={810} height={1072} alt="alt" data-swiper-parallax-scale="1.1" data-swiper-parallax="100" />
+              <div className="inline-flex justify-center items-center mx-auto relative overflow-hidden w-[100%] h-[100vh] md:h-[794px]">
+                <Image className="absolute" src="/assets/dummy_img_swiper_02.webp" style={{objectFit: 'cover'}} width={810} height={1072} alt="alt" data-swiper-parallax-scale="1.1" data-swiper-parallax="100" />
               </div>
             </swiper-slide>
             <swiper-slide>
-              <div className="inline-flex justify-center items-center mx-auto relative overflow-hidden w-[600px] h-[794px]">
-                <Image className="absolute" src="/assets/dummy_img_swiper_03.webp" width={810} height={1072} alt="alt" data-swiper-parallax-scale="1.1" data-swiper-parallax="100" />
+              <div className="inline-flex justify-center items-center mx-auto relative overflow-hidden w-[100%] h-[100vh] md:h-[794px]">
+                <Image className="absolute" src="/assets/dummy_img_swiper_03.webp" style={{objectFit: 'cover'}} width={810} height={1072} alt="alt" data-swiper-parallax-scale="1.1" data-swiper-parallax="100" />
               </div>
             </swiper-slide>
             <swiper-slide>
-              <div className="inline-flex justify-center items-center mx-auto relative overflow-hidden w-[600px] h-[794px]">
-                <Image className="absolute" src="/assets/dummy_img_swiper_02.webp" width={810} height={1072} alt="alt" data-swiper-parallax-scale="1.1" data-swiper-parallax="100" />
+              <div className="inline-flex justify-center items-center mx-auto relative overflow-hidden w-[100%] h-[100vh] md:h-[794px]">
+                <Image className="absolute" src="/assets/dummy_img_swiper_02.webp" style={{objectFit: 'cover'}} width={810} height={1072} alt="alt" data-swiper-parallax-scale="1.1" data-swiper-parallax="100" />
               </div>
             </swiper-slide>
             <swiper-slide>
-              <div className="inline-flex justify-center items-center mx-auto relative overflow-hidden w-[600px] h-[794px]">
-                <Image className="absolute" src="/assets/dummy_img_swiper_01.webp" width={810} height={1072} alt="alt" data-swiper-parallax-scale="1.1" data-swiper-parallax="100" />
+              <div className="inline-flex justify-center items-center mx-auto relative overflow-hidden w-[100%] h-[100vh] md:h-[794px]">
+                <Image className="absolute" src="/assets/dummy_img_swiper_01.webp" style={{objectFit: 'cover'}} width={810} height={1072} alt="alt" data-swiper-parallax-scale="1.1" data-swiper-parallax="100" />
               </div>
             </swiper-slide>
             <swiper-slide>
-              <div className="inline-flex justify-center items-center mx-auto relative overflow-hidden w-[600px] h-[794px]">
-                <Image className="absolute" src="/assets/dummy_img_swiper_02.webp" width={810} height={1072} alt="alt" data-swiper-parallax-scale="1.1" data-swiper-parallax="100" />
+              <div className="inline-flex justify-center items-center mx-auto relative overflow-hidden w-[100%] h-[100vh] md:h-[794px]">
+                <Image className="absolute" src="/assets/dummy_img_swiper_02.webp" style={{objectFit: 'cover'}} width={810} height={1072} alt="alt" data-swiper-parallax-scale="1.1" data-swiper-parallax="100" />
               </div>
             </swiper-slide>
             <swiper-slide>
-              <div className="inline-flex justify-center items-center mx-auto relative overflow-hidden w-[600px] h-[794px]">
-                <Image className="absolute" src="/assets/dummy_img_swiper_03.webp" width={810} height={1072} alt="alt" data-swiper-parallax-scale="1.1" data-swiper-parallax="100" />
+              <div className="inline-flex justify-center items-center mx-auto relative overflow-hidden w-[100%] h-[100vh] md:h-[794px]">
+                <Image className="absolute" src="/assets/dummy_img_swiper_03.webp" style={{objectFit: 'cover'}} width={810} height={1072} alt="alt" data-swiper-parallax-scale="1.1" data-swiper-parallax="100" />
               </div>
             </swiper-slide>
             <swiper-slide>
-              <div className="inline-flex justify-center items-center mx-auto relative overflow-hidden w-[600px] h-[794px]">
-                <Image className="absolute" src="/assets/dummy_img_swiper_02.webp" width={810} height={1072} alt="alt" data-swiper-parallax-scale="1.1" data-swiper-parallax="100" />
+              <div className="inline-flex justify-center items-center mx-auto relative overflow-hidden w-[100%] h-[100vh] md:h-[794px]">
+                <Image className="absolute" src="/assets/dummy_img_swiper_02.webp" style={{objectFit: 'cover'}} width={810} height={1072} alt="alt" data-swiper-parallax-scale="1.1" data-swiper-parallax="100" />
               </div>
             </swiper-slide>
             <swiper-slide>
-              <div className="inline-flex justify-center items-center mx-auto relative overflow-hidden w-[600px] h-[794px]">
-                <Image className="absolute" src="/assets/dummy_img_swiper_01.webp" width={810} height={1072} alt="alt" data-swiper-parallax-scale="1.1" data-swiper-parallax="100" />
+              <div className="inline-flex justify-center items-center mx-auto relative overflow-hidden w-[100%] h-[100vh] md:h-[794px]">
+                <Image className="absolute" src="/assets/dummy_img_swiper_01.webp" style={{objectFit: 'cover'}} width={810} height={1072} alt="alt" data-swiper-parallax-scale="1.1" data-swiper-parallax="100" />
               </div>
             </swiper-slide>
           </swiper-container>
